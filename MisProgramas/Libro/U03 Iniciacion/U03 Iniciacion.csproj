@@ -1,0 +1,82 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{88051F0E-1F85-45C2-BEC8-E2BFB39B9425}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Programacion.Iniciacion</RootNamespace>
+    <AssemblyName>Programacion.Iniciacion</AssemblyName>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>Programacion.Iniciacion.Actividades.Ejercicio11</StartupObject>
+  </PropertyGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Actividades\Ejercicio04.cs" />
+    <Compile Include="Actividades\Ejercicio06.cs" />
+    <Compile Include="Actividades\Ejercicio07.cs" />
+    <Compile Include="Actividades\Ejercicio08.cs" />
+    <Compile Include="Actividades\Ejercicio10.cs" />
+    <Compile Include="Actividades\Ejercicio09.cs" />
+    <Compile Include="Actividades\Ejercicio11.cs" />
+    <Compile Include="Actividades\Ejercicio13.cs" />
+    <Compile Include="Actividades\Ejercicio14.cs" />
+    <Compile Include="Actividades\Ejercicio15.cs" />
+    <Compile Include="Actividades\Ejercicio16.cs" />
+    <Compile Include="Actividades\Ejercicio20.cs" />
+    <Compile Include="Actividades\Ejercicio21.cs" />
+    <Compile Include="Ejemplos\AdivinaNumero\AdivinaNumero9.cs" />
+    <Compile Include="Ejemplos\AdivinaNumero\AdivinaNumero8.cs" />
+    <Compile Include="Ejemplos\AdivinaNumero\AdivinaNumero7.cs" />
+    <Compile Include="Ejemplos\AdivinaNumero\AdivinaNumero6.cs" />
+    <Compile Include="Ejemplos\AdivinaNumero\AdivinaNumero5.cs" />
+    <Compile Include="Ejemplos\AdivinaNumero\AdivinaNumero4.cs" />
+    <Compile Include="Ejemplos\AdivinaNumero\AdivinaNumero3.cs" />
+    <Compile Include="Ejemplos\AdivinaNumero\AdivinaNumero2.cs" />
+    <Compile Include="Ejemplos\AdivinaNumero\AdivinaNumero1.cs" />
+    <Compile Include="Ejemplos\Program.cs" />
+    <Compile Include="Ejemplos\Sumar.cs" />
+    <Compile Include="Ejemplos\TAEDemo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="UI\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

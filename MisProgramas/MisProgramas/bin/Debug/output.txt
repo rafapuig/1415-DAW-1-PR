@@ -1,0 +1,2 @@
+Hola mundo, en fichero de texto
+Y ahora una linea directamente desde la referencia a TextWriter

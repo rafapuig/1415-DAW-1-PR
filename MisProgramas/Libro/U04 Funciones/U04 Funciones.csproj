@@ -1,0 +1,124 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{25DA0B4C-B232-491D-BEDE-9D06D82B74FC}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Programacion.Funciones</RootNamespace>
+    <AssemblyName>Programacion.Funciones</AssemblyName>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>Programacion.Funciones.Revisiones.Ejercicio418.v2.Ejercicio18</StartupObject>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Actividades\Ejercicio03.cs" />
+    <Compile Include="Actividades\Ejercicio04 - Revision.cs" />
+    <Compile Include="Actividades\Ejercicio04.cs" />
+    <Compile Include="Actividades\Ejercicio07.cs" />
+    <Compile Include="Actividades\Ejercicio10.cs" />
+    <Compile Include="Actividades\Ejercicio11.Extension.cs" />
+    <Compile Include="Actividades\Ejercicio11.cs" />
+    <Compile Include="Actividades\Ejercicio17.Iteradores.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Actividades\Ejercicio17.Delegados.cs" />
+    <Compile Include="Actividades\Ejercicio17.Iteradores.v2.cs" />
+    <Compile Include="Actividades\Ejercicio18.cs" />
+    <Compile Include="Actividades\Ejercicio22 - Copia.cs" />
+    <Compile Include="Actividades\Ejercicio22.cs" />
+    <Compile Include="Actividades\Ejercicio21.cs" />
+    <Compile Include="Actividades\Ejercicio20.cs" />
+    <Compile Include="Actividades\FibonacciDemo.cs" />
+    <Compile Include="Actividades\Ejercicio23.cs" />
+    <Compile Include="Console\ConsoleBeepDemo.cs" />
+    <Compile Include="Console\ConsoleDemo.cs" />
+    <Compile Include="Ejemplos\AdivinaNumero\AdivinaNumero11.cs" />
+    <Compile Include="Ejemplos\AdivinaNumero\AdivinaNumero15.cs" />
+    <Compile Include="Ejemplos\AdivinaNumero\AdivinaNumero14.cs" />
+    <Compile Include="Ejemplos\AdivinaNumero\AdivinaNumero13.cs" />
+    <Compile Include="Ejemplos\AdivinaNumero\AdivinaNumero12.cs" />
+    <Compile Include="Ejemplos\AdivinaNumero\AdivinaNumero10.cs" />
+    <Compile Include="Ejemplos\AleatoriosDemo.cs" />
+    <Compile Include="Ejemplos\CuotaPrestamo.cs" />
+    <Compile Include="Ejemplos\DelegadosDemo.cs" />
+    <Compile Include="Ejemplos\ExtensionDemo.cs" />
+    <Compile Include="Ejemplos\MCDDemo.cs" />
+    <Compile Include="Ejemplos\ModulosDemo.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Recursividad\Ejercicio311 sucio.cs" />
+    <Compile Include="Revisiones\Ejercicio418\Ejercicio18v2.cs" />
+    <Compile Include="Revisiones\Ejercicio313.StringBuilder.cs" />
+    <Compile Include="Revisiones\Ejercicio407.cs" />
+    <Compile Include="Revisiones\Ejercicio311\Ejercicio311.3.1.cs" />
+    <Compile Include="Revisiones\Ejercicio311\Ejercicio311.4.cs" />
+    <Compile Include="Revisiones\Ejercicio311\Ejercicio311.3.cs" />
+    <Compile Include="Revisiones\Ejercicio311\Ejercicio311.2.cs" />
+    <Compile Include="Revisiones\Ejercicio311\Ejercicio311.1.cs" />
+    <Compile Include="Revisiones\Ejercicio311\Recursivo\Ejercicio311.cs" />
+    <Compile Include="Revisiones\Ejercicio314\Ejercicio314.1.cs" />
+    <Compile Include="Revisiones\Ejercicio314\Ejercicio314.8.cs" />
+    <Compile Include="Revisiones\Ejercicio314\Ejercicio314.7.cs" />
+    <Compile Include="Revisiones\Ejercicio314\Ejercicio314.6.cs" />
+    <Compile Include="Revisiones\Ejercicio314\Ejercicio314.5.cs" />
+    <Compile Include="Revisiones\Ejercicio314\Ejercicio314.4.cs" />
+    <Compile Include="Revisiones\Ejercicio314\Ejercicio314.3.cs" />
+    <Compile Include="Revisiones\Ejercicio314\Ejercicio314.2.cs" />
+    <Compile Include="Revisiones\Ejercicio314\Ejercicio314.cs" />
+    <Compile Include="Revisiones\Ejercicio314\Ejercicio314.9.cs" />
+    <Compile Include="Revisiones\Ejercicio314\Ejercicio314.10.cs" />
+    <Compile Include="Revisiones\Ejercicio320.cs" />
+    <Compile Include="Revisiones\Ejercicio313.cs" />
+    <Compile Include="Revisiones\Ejercicio321 - Copia.cs" />
+    <Compile Include="Revisiones\Ejercicio321.cs" />
+    <Compile Include="Revisiones\Ejercicio308.cs" />
+    <Compile Include="Revisiones\Ejercicio307.cs" />
+    <Compile Include="Revisiones\Ejercicio306.cs" />
+    <Compile Include="Strings\StringsDemo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

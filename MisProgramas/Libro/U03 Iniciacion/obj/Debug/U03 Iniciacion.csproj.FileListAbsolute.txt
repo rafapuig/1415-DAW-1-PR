@@ -1,0 +1,12 @@
+C:\Users\Rafa\Documents\Visual Studio 2013\Projects\MisProgramas\Programacion - 03 - Iniciacion\bin\Debug\Programacion.Iniciacion.exe.config
+C:\Users\Rafa\documents\visual studio 2013\Projects\MisProgramas\Programacion - 03 - Iniciacion\bin\Debug\Programacion.Iniciacion.exe
+C:\Users\Rafa\documents\visual studio 2013\Projects\MisProgramas\Programacion - 03 - Iniciacion\bin\Debug\Programacion.Iniciacion.pdb
+C:\Users\Rafa\documents\visual studio 2013\Projects\MisProgramas\Programacion - 03 - Iniciacion\obj\Debug\Programacion.Iniciacion.exe
+C:\Users\Rafa\documents\visual studio 2013\Projects\MisProgramas\Programacion - 03 - Iniciacion\obj\Debug\Programacion.Iniciacion.pdb
+C:\Users\Rafa\documents\visual studio 2013\Projects\MisProgramas\Programacion - 03 - Iniciacion\obj\Debug\U03 Iniciacion.csprojResolveAssemblyReference.cache
+C:\Users\Rafa\Google Drive\Funcionario\2014-15\Programacion\Proyectos\MisProgramas\Libro\U03 Iniciacion\bin\Debug\Programacion.Iniciacion.exe.config
+C:\Users\Rafa\Google Drive\Funcionario\2014-15\Programacion\Proyectos\MisProgramas\Libro\U03 Iniciacion\obj\Debug\Programacion.Iniciacion.exe
+C:\Users\Rafa\Google Drive\Funcionario\2014-15\Programacion\Proyectos\MisProgramas\Libro\U03 Iniciacion\obj\Debug\Programacion.Iniciacion.pdb
+C:\Users\Rafa\Google Drive\Funcionario\2014-15\Programacion\Proyectos\MisProgramas\Libro\U03 Iniciacion\bin\Debug\Programacion.Iniciacion.exe
+C:\Users\Rafa\Google Drive\Funcionario\2014-15\Programacion\Proyectos\MisProgramas\Libro\U03 Iniciacion\bin\Debug\Programacion.Iniciacion.pdb
+C:\Users\Rafa\Google Drive\Funcionario\2014-15\Programacion\Proyectos\MisProgramas\Libro\U03 Iniciacion\obj\Debug\U03 Iniciacion.csprojResolveAssemblyReference.cache

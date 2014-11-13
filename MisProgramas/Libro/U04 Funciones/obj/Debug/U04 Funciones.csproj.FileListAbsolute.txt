@@ -1,0 +1,12 @@
+C:\Users\Rafa\Documents\Visual Studio 2013\Projects\MisProgramas\Libro\U04 Funciones\bin\Debug\Programacion.Funciones.exe.config
+C:\Users\Rafa\Documents\Visual Studio 2013\Projects\MisProgramas\Libro\U04 Funciones\bin\Debug\Programacion.Funciones.exe
+C:\Users\Rafa\Documents\Visual Studio 2013\Projects\MisProgramas\Libro\U04 Funciones\bin\Debug\Programacion.Funciones.pdb
+C:\Users\Rafa\Documents\Visual Studio 2013\Projects\MisProgramas\Libro\U04 Funciones\obj\Debug\U04 Funciones.csprojResolveAssemblyReference.cache
+C:\Users\Rafa\Documents\Visual Studio 2013\Projects\MisProgramas\Libro\U04 Funciones\obj\Debug\Programacion.Funciones.exe
+C:\Users\Rafa\Documents\Visual Studio 2013\Projects\MisProgramas\Libro\U04 Funciones\obj\Debug\Programacion.Funciones.pdb
+C:\Users\Rafa\Google Drive\Funcionario\2014-15\Programacion\Proyectos\MisProgramas\Libro\U04 Funciones\bin\Debug\Programacion.Funciones.exe.config
+C:\Users\Rafa\Google Drive\Funcionario\2014-15\Programacion\Proyectos\MisProgramas\Libro\U04 Funciones\obj\Debug\Programacion.Funciones.exe
+C:\Users\Rafa\Google Drive\Funcionario\2014-15\Programacion\Proyectos\MisProgramas\Libro\U04 Funciones\obj\Debug\Programacion.Funciones.pdb
+C:\Users\Rafa\Google Drive\Funcionario\2014-15\Programacion\Proyectos\MisProgramas\Libro\U04 Funciones\bin\Debug\Programacion.Funciones.exe
+C:\Users\Rafa\Google Drive\Funcionario\2014-15\Programacion\Proyectos\MisProgramas\Libro\U04 Funciones\bin\Debug\Programacion.Funciones.pdb
+C:\Users\Rafa\Google Drive\Funcionario\2014-15\Programacion\Proyectos\MisProgramas\Libro\U04 Funciones\obj\Debug\U04 Funciones.csprojResolveAssemblyReference.cache
