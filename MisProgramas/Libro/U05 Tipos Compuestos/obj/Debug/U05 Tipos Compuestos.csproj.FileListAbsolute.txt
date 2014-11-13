@@ -12,3 +12,6 @@ C:\Users\Rafa\Google Drive\Funcionario\2014-15\Programacion\Proyectos\MisProgram
 C:\Users\Rafa\Google Drive\Funcionario\2014-15\Programacion\Proyectos\MisProgramas\Libro\U05 Tipos Compuestos\obj\Debug\Programacion.TiposCompuestos.pdb
 C:\Users\Rafa\Google Drive\Funcionario\2014-15\Programacion\Proyectos\MisProgramas\Libro\U05 Tipos Compuestos\bin\Debug\MathNet.Numerics.dll
 C:\Users\Rafa\Google Drive\Funcionario\2014-15\Programacion\Proyectos\MisProgramas\Libro\U05 Tipos Compuestos\bin\Debug\MathNet.Numerics.xml
+C:\Users\Rafa\Google Drive\Funcionario\2014-15\Programacion\1415-DAW-1-PR-Git\MisProgramas\Libro\U05 Tipos Compuestos\bin\Debug\Programacion.TiposCompuestos.exe.config
+C:\Users\Rafa\Google Drive\Funcionario\2014-15\Programacion\1415-DAW-1-PR-Git\MisProgramas\Libro\U05 Tipos Compuestos\obj\Debug\Programacion.TiposCompuestos.exe
+C:\Users\Rafa\Google Drive\Funcionario\2014-15\Programacion\1415-DAW-1-PR-Git\MisProgramas\Libro\U05 Tipos Compuestos\obj\Debug\Programacion.TiposCompuestos.pdb
