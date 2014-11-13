@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Programacion.TiposCompuestos.Ordenacion
 {
@@ -11,7 +7,8 @@ namespace Programacion.TiposCompuestos.Ordenacion
         static Random alea = new Random();
 
         static void Main()
-        {         
+        {
+            Console.Title = "Algoritmos de ordenacion - Quicksort Demo";
             TestQuickSort();
             TestQuicksortPerformance();
             Console.ReadKey();
