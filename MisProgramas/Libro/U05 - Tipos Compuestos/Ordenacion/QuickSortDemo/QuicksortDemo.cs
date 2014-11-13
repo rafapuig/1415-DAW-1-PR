@@ -81,7 +81,7 @@ namespace Programacion.TiposCompuestos.Ordenacion
 
             System.Diagnostics.Stopwatch cronometro = System.Diagnostics.Stopwatch.StartNew();
             
-            Arrays.QuickSort(valores, 0, valores.Length - 1,
+            QuickSort.QuickSort(valores, 0, valores.Length - 1,
                 () => contadorComparaciones++,
                 () => contadorAsignaciones++);
 

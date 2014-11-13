@@ -8,7 +8,7 @@ namespace Programacion.TiposCompuestos.Ordenacion
 {
     delegate void MostrarOrdenacionQuickSort<T>(T[] items, int central, int primero, int ultimo, int i, int j);
 
-    static class Arrays
+    static class QuickSort
     {
         public static void QuickSort<T>(this T[] items, int primero, int ultimo,
             Action comparacion = null, 

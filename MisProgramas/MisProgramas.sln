@@ -33,6 +33,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuickSortDemo", "Libro\U05 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SeleccionDirectaDemo", "Libro\U05 - Tipos Compuestos\Ordenacion\SeleccionDirectaDemo\SeleccionDirectaDemo.csproj", "{4EFD960A-0339-4A54-A72C-4885AA87CA8F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InsercionDirectaDemo", "Libro\U05 - Tipos Compuestos\Ordenacion\InsercionDirectaDemo\InsercionDirectaDemo.csproj", "{11E00899-18CD-4A8F-A904-48954403B211}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -79,6 +81,10 @@ Global
 		{4EFD960A-0339-4A54-A72C-4885AA87CA8F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4EFD960A-0339-4A54-A72C-4885AA87CA8F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4EFD960A-0339-4A54-A72C-4885AA87CA8F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{11E00899-18CD-4A8F-A904-48954403B211}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{11E00899-18CD-4A8F-A904-48954403B211}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{11E00899-18CD-4A8F-A904-48954403B211}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{11E00899-18CD-4A8F-A904-48954403B211}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -97,5 +103,6 @@ Global
 		{F1AAB01B-CEA5-41BA-A4E9-9D9565EB8C59} = {3957B079-F04A-48B4-B1D3-936871A2AC06}
 		{0006BBDB-9856-4936-8E18-7E3D8BC896B2} = {F1AAB01B-CEA5-41BA-A4E9-9D9565EB8C59}
 		{4EFD960A-0339-4A54-A72C-4885AA87CA8F} = {F1AAB01B-CEA5-41BA-A4E9-9D9565EB8C59}
+		{11E00899-18CD-4A8F-A904-48954403B211} = {F1AAB01B-CEA5-41BA-A4E9-9D9565EB8C59}
 	EndGlobalSection
 EndGlobal
