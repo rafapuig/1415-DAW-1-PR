@@ -68,7 +68,7 @@ namespace Programacion.TiposCompuestos.Ejemplos
         {
             Console.Title = "Segundo ejemplo de numeros aleatorios con arrays";
 
-            Bolsa bolsa = new Bolsa(49);
+            Bolsa bolsa = new Bolsa(49);            
 
             int sorteos = 10;
             for (int n = 1; n <= sorteos; n++)
@@ -79,6 +79,7 @@ namespace Programacion.TiposCompuestos.Ejemplos
             }
             Console.ReadKey();
         }
+        
         static void RealizarSorteo(Bolsa bolsa, int extracciones)
         {
             for (int i = 0; i < extracciones; i++)

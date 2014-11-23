@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{F2085782-AC63-4056-B304-4F0D2F43FB8C}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <ProjectGuid>{63C74A83-433A-49C1-B7B7-A0A3E35789F4}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Programacion.TiposCompuestos</RootNamespace>
-    <AssemblyName>Programacion.TiposCompuestos</AssemblyName>
+    <RootNamespace>WindowsFormsIntro</RootNamespace>
+    <AssemblyName>WindowsFormsIntro</AssemblyName>
     <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -33,46 +33,18 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject>Programacion.TiposCompuestos.Ordenacion.OrdenacionDemo</StartupObject>
+    <StartupObject>Program304</StartupObject>
   </PropertyGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Arrays\ArraysDemo.cs" />
-    <Compile Include="Busqueda\BusquedasDemov2.cs" />
-    <Compile Include="Busqueda\BusquedasDemov4.cs" />
-    <Compile Include="Busqueda\BusquedasDemov3.cs" />
-    <Compile Include="Busqueda\BusquedasDemo.cs" />
-    <Compile Include="Ejemplos\AleatoriosDemo.cs" />
-    <Compile Include="Ejemplos\Carta.cs" />
-    <Compile Include="Delegados\DelegadosArraysDemo.cs" />
-    <Compile Include="Ejemplos\ConsoleBeepDemo.cs" />
-    <Compile Include="Ejemplos\MaximoDemo.cs" />
-    <Compile Include="Ejemplos\Nota.cs" />
-    <Compile Include="Estructuras\Fracciones\FraccionDemo.cs" />
-    <Compile Include="Enums\EnumsDemo.cs" />
-    <Compile Include="Estructuras\Fracciones\FraccionDemov4.Operadores.cs" />
-    <Compile Include="Estructuras\Fracciones\FraccionDemov3.Inmutable.cs" />
-    <Compile Include="Estructuras\Fracciones\FraccionDemov2.cs" />
-    <Compile Include="Estructuras\PartidoInfo.cs" />
-    <Compile Include="Estructuras\PuntoDemov2.cs" />
-    <Compile Include="Estructuras\PuntoDemov1.cs" />
-    <Compile Include="Estructuras\VectorDemov1.cs" />
-    <Compile Include="Matrices\MatricesDemo.cs" />
-    <Compile Include="Ordenacion\OrdenacionDemo.cs" />
-    <Compile Include="Revisiones\Ejercicio304.cs" />
-    <Compile Include="Revisiones\Ejercicio311.cs" />
-    <Compile Include="Revisiones\Ejercicio320.cs" />
-    <Compile Include="Revisiones\Ejercicio321.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <Reference Include="MathNet.Numerics">
-      <HintPath>..\..\packages\MathNet.Numerics.3.2.3\lib\net40\MathNet.Numerics.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
-    <Reference Include="System.Numerics" />
+    <Reference Include="System.Windows.Forms" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Program.cs" />
+    <Compile Include="Program304.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

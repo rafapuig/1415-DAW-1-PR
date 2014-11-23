@@ -96,8 +96,7 @@ namespace Programacion.TiposCompuestos
         {
             return String.Format("{0} / {1}", f.Numerador, f.Denominador);
         }
-
-
+        
         static Fraccion ToDenominador(this Fraccion f, long denominadorObjetivo)
         {
             long factor = denominadorObjetivo / f.Denominador;
@@ -105,6 +104,27 @@ namespace Programacion.TiposCompuestos
             t.Numerador = f.Numerador * factor;
             t.Denominador = denominadorObjetivo;
             return t;
+        }
+
+        static long MCM(long a, long b)
+        {
+            return a / MCD(a, b) * b;    //primero dividir para evitar desbordamiento
+        }
+
+        static long MCD(long a, long b)
+        {
+            a = Math.Abs(a);
+            b = Math.Abs(b);
+            long dividendo = Math.Max(a, b);
+            long divisor = Math.Min(a, b);
+
+            long resto;
+            do
+            {
+                if ((resto = dividendo % divisor) == 0) return divisor;
+                dividendo = divisor;
+                divisor = resto;
+            } while (true);
         }
 
         static Fraccion Reducir(this Fraccion f)
@@ -116,7 +136,6 @@ namespace Programacion.TiposCompuestos
             return s;
         }
 
-        
         static Fraccion Sumar(this Fraccion f1, Fraccion f2)
         {
             long mcm = MCM(f1.Denominador, f2.Denominador);
@@ -137,8 +156,7 @@ namespace Programacion.TiposCompuestos
             f2.Numerador = -f2.Numerador;
             return f1.Sumar(f2);
         }
-              
-
+        
         static Fraccion Multiplicar(this Fraccion f1, Fraccion f2)
         {            
             Fraccion mult;
@@ -154,7 +172,6 @@ namespace Programacion.TiposCompuestos
             fi.Denominador = f.Numerador;
             return fi;
         }
-
 
         static Fraccion Dividir(this Fraccion f1, Fraccion f2)
         {
@@ -197,27 +214,6 @@ namespace Programacion.TiposCompuestos
             f.Denominador = iDenominador;
 
             return Reducir(f);
-        }
-
-        static long MCM(long a, long b)
-        {
-            return a / MCD(a, b) * b;    //primero dividir para evitar desbordamiento
-        }
-
-        static long MCD(long a, long b)
-        {
-            a = Math.Abs(a);
-            b = Math.Abs(b);
-            long dividendo = Math.Max(a, b);
-            long divisor = Math.Min(a, b);
-
-            long resto;
-            do
-            {
-                if ((resto = dividendo % divisor) == 0) return divisor;
-                dividendo = divisor;
-                divisor = resto;
-            } while (true);
         }
 
     }

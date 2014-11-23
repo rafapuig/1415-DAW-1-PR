@@ -86,7 +86,7 @@ namespace Programacion.TiposCompuestos.Estructuras
             return this.Sumar(f2);
         }
 
-        public Fraccion Multiplicar( Fraccion f2)
+        public Fraccion Multiplicar(Fraccion f2)
         {
             Fraccion mult;
             mult.Denominador = this.Denominador * f2.Denominador;

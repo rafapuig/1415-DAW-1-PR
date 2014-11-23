@@ -26,6 +26,30 @@ namespace Programacion.TiposCompuestos.Ejemplos
                 bolsa[i] = i + 1;
             }
         }
+        
+        static void ReintroducirNumerosBolsa()
+        {
+            Quedan = TotalNumeros;
+        }
+
+        static int ExtraerNumero(this int[] bolsa)
+        {
+            if (Quedan == 0)
+                throw new InvalidOperationException("No quedan numeros en la bolsa");
+
+            int pos = alea.Next(Quedan);
+            int valor = bolsa[pos];
+
+            //Intercambiar posiciones entre el valor que sale y el ultimo
+            int temp = bolsa[pos];
+            bolsa[pos] = bolsa[Quedan - 1];
+            bolsa[Quedan - 1] = temp;
+
+            Quedan--;
+            return valor;
+        }
+
+
 
         static void Main()
         {
@@ -45,31 +69,10 @@ namespace Programacion.TiposCompuestos.Ejemplos
         {            
             for (int i = 0; i < extracciones; i++)
             {
-                int numero = ExtraerNumero(bolsa);
+                int numero = bolsa.ExtraerNumero();
                 Console.Write("{0,2}{1}", numero, i < extracciones - 1 ? ", " : "\n");
             }
         }
 
-        static void ReintroducirNumerosBolsa()
-        {
-            Quedan = TotalNumeros;
-        }
-
-        static int ExtraerNumero(int[] bolsa)
-        {
-            if (Quedan == 0)
-                throw new InvalidOperationException("No quedan numeros en la bolsa");
-            
-            int pos = alea.Next(Quedan);
-            int valor = bolsa[pos];
-
-            //Intercambiar posiciones entre el valor que sale y el ultimo
-            int temp = bolsa[pos];
-            bolsa[pos] = bolsa[Quedan - 1];
-            bolsa[Quedan - 1] = temp;   
-
-            Quedan--;
-            return valor;
-        }
     }
 }
