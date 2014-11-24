@@ -29,13 +29,13 @@ namespace TestPersona
                 FechaNacimiento = new DateTime(2000, 12, 13)
             };
 
-            Console.WriteLine("{0} esta soltero? {1}",
+            Console.WriteLine("{0} esta casado? {1}",
                 p1.NombreCompleto,
-                p1.Soltero ? "Si" : "No");
+                p1.Casado ? "Si" : "No");
 
-            Console.WriteLine("{0} esta soltero? {1}",
+            Console.WriteLine("{0} esta casado? {1}",
                 p2.NombreCompleto,
-                p2.Soltero ? "Si" : "No");
+                p2.Casado ? "Si" : "No");
                         
            
             Console.WriteLine(p1.Conyuge.NombreCompleto);

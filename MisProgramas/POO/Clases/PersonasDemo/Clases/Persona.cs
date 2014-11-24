@@ -75,7 +75,7 @@ namespace Clases
             get { return this.conyuge; }
         }
         
-        public bool Soltero { get { return this.conyuge == null; } }
+        public bool Casado { get { return this.conyuge != null; } }
         
         public void Casarse(Persona prometido)
         {
@@ -89,10 +89,10 @@ namespace Clases
                 throw new ArgumentException("Una persona no puede casarse consigo misma");
 
             //Comprobar que no esta casado con otra persona
-            if (!Soltero)
+            if (Casado)
                 throw new InvalidOperationException("No se puede cassar estando casado");
 
-            if (!prometido.Soltero)
+            if (prometido.Casado)
                 throw new ArgumentException("Una persona casada no puede casarse con esta persona", "prometido");
 
             this.conyuge = prometido;
@@ -102,7 +102,7 @@ namespace Clases
         public void Divorciarse()
         {
             //if (this.Conyuge == null)
-            if (!Soltero)
+            if (Casado)
                 throw new InvalidOperationException("No se puede divorciar alguien que no este previamente casado");
 
             this.conyuge.conyuge = null;
