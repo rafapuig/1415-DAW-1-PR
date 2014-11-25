@@ -18,7 +18,7 @@ namespace KeyboardDemo
 
         static void Main()
         {
-            System.Threading.TimerCallback updatingTime = state => 
+            System.Threading.TimerCallback updatingTime = state =>
             {
                 Update();
                 //Draw();
@@ -28,13 +28,13 @@ namespace KeyboardDemo
             {
                 Draw();
                 //new System.Threading.Thread(Draw);
-            };
+            };           
 
             Initialize();
             Draw();
 
             var updateTimer = new System.Threading.Timer(updatingTime, null, 0, PeriodTime);
-            var drawTimer = new System.Threading.Timer(drawingTime, null, 0, PeriodTime * 4);
+            var drawTimer = new System.Threading.Timer(drawingTime, null, 0, PeriodTime * 2);
 
             while (!Exit) {
                 //Draw();
@@ -100,32 +100,47 @@ namespace KeyboardDemo
         {        
             if (!Modelo.HasChanged) return;
 
-            Console.Clear();            
+            Console.Clear();
 
-            Console.CursorLeft = 0;
-            Console.CursorTop = 0;
+            string[] titulo = new string[] {
+                    @" _____                         _______        _           _       ",
+                    @"|  __ \                       |__   __|      | |         | |      ",
+                    @"| |  | | ___ _ __ ___   ___      | | ___  ___| | __ _  __| | ___  ",
+                    @"| |  | |/ _ \ '_ ` _ \ / _ \     | |/ _ \/ __| |/ _` |/ _` |/ _ \ ",
+                    @"| |__| |  __/ | | | | | (_) |    | |  __/ (__| | (_| | (_| | (_) |",
+                    @"|_____/ \___|_| |_| |_|\___/     |_|\___|\___|_|\__,_|\__,_|\___/ "};
 
-            Console.WriteLine(@" _____                         _______        _           _        ");
-            Console.WriteLine(@"|  __ \                       |__   __|      | |         | |       ");
-            Console.WriteLine(@"| |  | | ___ _ __ ___   ___      | | ___  ___| | __ _  __| | ___   ");
-            Console.WriteLine(@"| |  | |/ _ \ '_ ` _ \ / _ \     | |/ _ \/ __| |/ _` |/ _` |/ _ \  ");
-            Console.WriteLine(@"| |__| |  __/ | | | | | (_) |    | |  __/ (__| | (_| | (_| | (_) | ");
-            Console.WriteLine(@"|_____/ \___|_| |_| |_|\___/     |_|\___|\___|_|\__,_|\__,_|\___/  ");
+
+            DrawAsciiModel(
+                (Console.WindowWidth - titulo[0].Length) / 2,
+                0, titulo);
             
+            ////Console.CursorLeft = Modelo.PlayerPosX;
+            //Console.CursorTop = Modelo.PlayerPosY;         
 
-            //Console.CursorLeft = Modelo.PlayerPosX;
-            Console.CursorTop = Modelo.PlayerPosY;         
+            //for (int i = 0; i < Modelo.PlayerHeight; i++)
+            //{
+            //    Console.CursorLeft = Modelo.PlayerPosX;
+            //    Console.Write(Modelo.Player[i]);
+            //    if (i < Modelo.PlayerHeight - 1) Console.CursorTop++;
+            //}
 
-            for (int i = 0; i < Modelo.PlayerHeight; i++)
-            {
-                Console.CursorLeft = Modelo.PlayerPosX;
-                Console.Write(Modelo.Player[i]);
-                if (i < Modelo.PlayerHeight - 1) Console.CursorTop++;
-            }
+            DrawAsciiModel(Modelo.PlayerPosX, Modelo.PlayerPosY, Modelo.Player);
 
             //Cuando se termina el resfreco de pantalla la escena esta actualizada  
             Modelo.ResetChanges();
 
+        }
+
+        //Dibuja un modelo Ascii en la posicion X,Y indicada
+        static void DrawAsciiModel(int x, int y, string[] asciiModel)
+        {
+            for (int i = 0; i < asciiModel.Length; i++)
+            {
+                Console.CursorLeft = x;
+                Console.CursorTop = y + i;
+                Console.Write(asciiModel[i]);                
+            }
         }
     
     }

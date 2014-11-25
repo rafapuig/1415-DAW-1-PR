@@ -31,6 +31,32 @@ namespace KeyboardDemo
         public static string[] MilleniumFalcon { get { return _MilleniumFalcon; } }
 
 
+
+        private static string[] _MilleniumFalconVertical = new string[] {
+                @"           _     _            ",
+                @"          /_|   |_\           ",
+                @"         //||   ||\\          ",
+                @"        // ||   || \\         ",
+                @"       //  ||___||  \\        ",
+                @"      /     |   |     \    _  ",
+                @"     /    __|   |__    \  /_\ ",
+                @"    / .--~  |   |  ~--. \|   |",
+                @"   /.~ __\  |   |  /   ~.|   |",
+                @"  .~  `=='\ |   | /   _.-'.  |",
+                @" /  /      \|   |/ .-~    _.-'",
+                @"|           +---+  \  _.-~  | ",
+                @"`=----.____/  #  \____.----=' ",
+                @" [::::::::|  (_)  |::::::::]  ",
+                @".=----~~~~~\     /~~~~~----=. ",
+                @"|          /`---'\          | ",
+                @" \  \     /       \     /  /  ",
+                @"  `.     /         \     .'   ",
+                @"    `.  /._________.\  .'     ",
+                @"      `--._________.--'       "};
+
+        public static string[] MilleniumFalconVertical { get { return _MilleniumFalconVertical; } }
+
+
         private static string[] _EnemyShip = new string[] {
                 @" /  _  \ ",
                 @"|-=(_)=-|", 
@@ -74,3 +100,4 @@ namespace KeyboardDemo
 
 
 }
+

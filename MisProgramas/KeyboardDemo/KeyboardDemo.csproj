@@ -41,6 +41,7 @@
   <ItemGroup>
     <Compile Include="Alternativo.cs" />
     <Compile Include="AsciiModels.cs" />
+    <Compile Include="buffer.cs" />
     <Compile Include="GetKeyStateDemo.cs" />
     <Compile Include="Modelo.cs" />
     <Compile Include="Program.cs" />
