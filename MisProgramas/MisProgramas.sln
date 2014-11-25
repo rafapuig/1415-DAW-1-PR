@@ -55,6 +55,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Clases", "POO\Clases\Person
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestPersona", "POO\Clases\PersonasDemo\TestPersona\TestPersona.csproj", "{7732C99C-5727-4989-B9EE-091EDED4D4BB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KeyboardDemo", "KeyboardDemo\KeyboardDemo.csproj", "{3E0019FC-FC88-4F2B-99C2-142F5CA977F4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -133,6 +135,10 @@ Global
 		{7732C99C-5727-4989-B9EE-091EDED4D4BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7732C99C-5727-4989-B9EE-091EDED4D4BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7732C99C-5727-4989-B9EE-091EDED4D4BB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3E0019FC-FC88-4F2B-99C2-142F5CA977F4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3E0019FC-FC88-4F2B-99C2-142F5CA977F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3E0019FC-FC88-4F2B-99C2-142F5CA977F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3E0019FC-FC88-4F2B-99C2-142F5CA977F4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -161,5 +167,6 @@ Global
 		{7DAA8E09-132B-4F84-A2FD-650BD55475E7} = {F16AA1ED-A54C-4DE5-A156-6089CCEACD4D}
 		{0F619FA2-DCF6-46DE-B1DF-265B5097E25B} = {7DAA8E09-132B-4F84-A2FD-650BD55475E7}
 		{7732C99C-5727-4989-B9EE-091EDED4D4BB} = {7DAA8E09-132B-4F84-A2FD-650BD55475E7}
+		{3E0019FC-FC88-4F2B-99C2-142F5CA977F4} = {CD141A76-A388-435B-BF14-B468E1790436}
 	EndGlobalSection
 EndGlobal
