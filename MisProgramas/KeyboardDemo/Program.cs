@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-
 using System.Text;
 using System.Threading.Tasks;
+using System.Threading;
 
 namespace KeyboardDemo
 {
@@ -12,11 +12,30 @@ namespace KeyboardDemo
         //Indica si debemos terminar el juego
         static bool Exit = false;
 
-        //Itervalo en milisegundos que debe transcurrir entre actualizaciones del estado del modelo del juego
+        //Intervalo en milisegundos que debe transcurrir entre actualizaciones del estado del modelo del juego
         const int PeriodTime = 8;
-          
 
-        static void Main()
+        //Inidicar si estamos utilizando un doble buffer para crear la escena y luego volcarla a la consola una vez generada
+        static bool DoubleBufferMode { get { return ConsoleDobleBuffer != null; } }
+
+        //Doble buffer para la consola
+        static DoubleBuffer.buffer ConsoleDobleBuffer = null;
+
+        //Como vamos a dibujar las lineas de un grafico ascii (depende de si se usa doble buffer)
+        static Action<int, int, string> DrawAsciiModelLine
+        {
+            get
+            {
+                if (DoubleBufferMode) return DrawLineInBuffer;  //Si estamos en modo doble buffer la estrategia es dibujarla en el buffer
+                return DrawLine;    //Si no la estrategia es dibujar directamente en la consola
+            }
+        }
+
+        //Como dibujar una linea en posicion x,y -> dibujarla en el buffer
+        static Action<int, int, string> DrawLineInBuffer = (int i, int j, string linea) => { ConsoleDobleBuffer.Draw(linea, i, j, 7); };
+
+
+        static void MainOld()
         {
             System.Threading.TimerCallback updatingTime = state =>
             {
@@ -47,7 +66,23 @@ namespace KeyboardDemo
             //    Draw();
             //    //System.Threading.Thread.Sleep(40);
             //}            
-        }        
+        }
+        
+        static void Main()
+        {  
+            Initialize();
+            Draw();
+
+            //Activar los temporizadores para llamar a Update y Draw cuando se cumpla el intervalo de tiempo
+            var updateTimer = new Timer(state => { Update(); }, null, 0, PeriodTime);
+            var drawTimer = new Timer(state => { Draw(); }, null, 0, PeriodTime * 2);
+
+            //Esperar a que se pulse la tecla de salida
+            while (!Exit) { }              
+        
+        }
+
+        
 
         //Inicializar el juego, se llama una vez para preparar los elementos del juego
         static void Initialize()
@@ -55,11 +90,15 @@ namespace KeyboardDemo
             Console.Title = "Demo teclado";
             Console.CursorVisible = false;
 
-            //Dar un tamaño a la ventana de la consola
+            //Dar un tamaño a la ventana de la consola (lo mas grande posible)
             Console.WindowWidth = Console.LargestWindowWidth;
-            Console.WindowHeight = Console.LargestWindowHeight;            
+            Console.WindowHeight = Console.LargestWindowHeight;
 
-            //Decirle al modelo como debe obtener los valores de acho y alto de espacio de la pantalla
+            //Inicializar el doble buffer y el delegado para dibujar lineas segun sea el caso
+            ConsoleDobleBuffer = new DoubleBuffer.buffer(Console.WindowWidth, Console.WindowHeight, Console.WindowWidth, Console.WindowHeight);
+            
+
+            //Decirle al modelo como debe obtener los valores de ancho y alto de espacio de la pantalla
             Modelo.GetViewPortWidth = () => Console.WindowWidth - 1;
             Modelo.GetViewPortHeight = () => Console.WindowHeight - 1;
 
@@ -100,7 +139,11 @@ namespace KeyboardDemo
         {        
             if (!Modelo.HasChanged) return;
 
-            Console.Clear();
+            if(DoubleBufferMode)
+                ConsoleDobleBuffer.Clear(); //Aplicar este metodo para limpiar el doble buffer (donde se crea la escena)
+            else
+                Console.Clear();  //Cuando se dibuja directamente en la consola en lugar del doble buffer
+            
 
             string[] titulo = new string[] {
                     @" _____                         _______        _           _       ",
@@ -111,37 +154,54 @@ namespace KeyboardDemo
                     @"|_____/ \___|_| |_| |_|\___/     |_|\___|\___|_|\__,_|\__,_|\___/ "};
 
 
-            DrawAsciiModel(
+            //Dibujar el rotulo de Demo Teclado centrado en la pantalla y arriba del todo
+            DrawASCIIModel(
                 (Console.WindowWidth - titulo[0].Length) / 2,
-                0, titulo);
+                0, titulo);  
+
+            //Dibujar el jugador
+            DrawASCIIModel(Modelo.PlayerPosX, Modelo.PlayerPosY, Modelo.Player);
+
+            if(DoubleBufferMode) ConsoleDobleBuffer.Print(); //Volcar el contenido del buffer en la pantalla (Consola) si usamos doble buffer
             
-            ////Console.CursorLeft = Modelo.PlayerPosX;
-            //Console.CursorTop = Modelo.PlayerPosY;         
-
-            //for (int i = 0; i < Modelo.PlayerHeight; i++)
-            //{
-            //    Console.CursorLeft = Modelo.PlayerPosX;
-            //    Console.Write(Modelo.Player[i]);
-            //    if (i < Modelo.PlayerHeight - 1) Console.CursorTop++;
-            //}
-
-            DrawAsciiModel(Modelo.PlayerPosX, Modelo.PlayerPosY, Modelo.Player);
-
             //Cuando se termina el resfreco de pantalla la escena esta actualizada  
             Modelo.ResetChanges();
-
         }
 
-        //Dibuja un modelo Ascii en la posicion X,Y indicada
-        static void DrawAsciiModel(int x, int y, string[] asciiModel)
+
+        //Dibuja un modelo Ascii en la posicion X,Y indicada en el doble buffer o directamente en la consola
+        static void DrawASCIIModel(int x, int y, string[] asciiChars)
         {
-            for (int i = 0; i < asciiModel.Length; i++)
+            for (int i = 0; i < asciiChars.Length; i++)
             {
-                Console.CursorLeft = x;
-                Console.CursorTop = y + i;
-                Console.Write(asciiModel[i]);                
+                DrawAsciiModelLine(x, y + i, asciiChars[i]);
             }
         }
+
+
+        //Dibujar una linea en posicion X,Y directamente en la pantalla sin usar doble buffer
+        static void DrawLine(int x, int y, string line)
+        {
+            Console.SetCursorPosition(x, y);
+            Console.Write(line);
+        }
+
+
+        ////Vesion sin delegados
+        //static void DrawAsciiModel(int x, int y, string[] asciiModel, bool dobleBufferMode = true)
+        //{
+        //    for (int i = 0; i < asciiModel.Length; i++)
+        //    {
+        //        if(dobleBufferMode)
+        //            ConsoleDobleBuffer.Draw(asciiModel[i], x, y + i, 7);
+        //        else
+        //        {
+        //            Console.CursorLeft = x;
+        //            Console.CursorTop = y + i;
+        //            Console.Write(asciiModel[i]);
+        //        }               
+        //    }
+        //}
     
     }
 }
