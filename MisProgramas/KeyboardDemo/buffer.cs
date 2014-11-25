@@ -175,12 +175,18 @@ namespace DoubleBuffer
         /// </summary>
         public void Clear()
         {
+            Clear(1);
+        }
+
+        public void Clear(short attibutes)
+        {
             for (int i = 0; i < buf.Length; i++)
             {
-                buf[i].Attributes = 1;
+                buf[i].Attributes = attibutes;
                 buf[i].Char.AsciiChar = 32;
             }
         }
+
         /// <summary>
         /// Pass in a buffer to change the current buffer.
         /// </summary>

@@ -6,6 +6,15 @@ using System.Threading.Tasks;
 
 namespace KeyboardDemo
 {
+
+    struct Enemigo
+    {
+        public float PosX;
+        public float PosY;
+        public float DeltaX;
+        public float DeltaY;
+    }
+
     static class Modelo
     {
         //Posicion X e Y del jugador en la pantalla
@@ -38,6 +47,9 @@ namespace KeyboardDemo
         public static int PlayerHeight { get { return Player.Length; } }
 
 
+        public static Enemigo[] Enemigos = new Enemigo[10];
+
+
         //Mover un jugador por el mundo 
         public static void Mover(int deltaX, int deltaY)
         {
@@ -58,7 +70,49 @@ namespace KeyboardDemo
             HasChanged = true;
         }
 
-        
+        public static void MoverEnemigo(ref Enemigo enemigo, float deltaX, float deltaY)
+        {
+            //Si no hay movimiento volver del metodo sin hacer nada;
+            if (deltaX == 0 && deltaY == 0) return;
+
+            //int nuevaPosX = PlayerPosX + deltaX;
+            //nuevaPosX = Math.Min(nuevaPosX, GetViewPortWidth() - 1); //Como maximo tope derecha para no salirnos
+            //PlayerPosX = Math.Max(0, nuevaPosX);     //Como minimo 0 para no salirnos por la izquierda
+            float nuevaPosX = enemigo.PosX + deltaX;
+            enemigo.PosX = Math.Max(0,
+                Math.Min(GetViewPortWidth() - AsciiModels.EnemyShip[0].Length, nuevaPosX));
+            if (nuevaPosX != enemigo.PosX) enemigo.DeltaX = -enemigo.DeltaX; //Si es distito es porque hemos chocado, cambiar de direccion
+
+            float nuevaPosY = enemigo.PosY + deltaY;
+            enemigo.PosY = Math.Max(0,
+                Math.Min(nuevaPosY, GetViewPortHeight() - (AsciiModels.EnemyShip.Length - 1)));
+            if (nuevaPosY != enemigo.PosY) enemigo.DeltaY = -enemigo.DeltaY;    //Si es distito es porque hemos chocado, cambiar de direccion
+
+            HasChanged = true;
+        }
+
+
+        static Random alea = new Random();
+        public static void MoverEnemigos()
+        {
+            for(int i=0; i<Enemigos.Length; i++)
+            {
+                int deltaX = alea.Next(3) - 1;
+
+                if (Enemigos[i].DeltaX == 0)
+                    Enemigos[i].DeltaX = deltaX/2.0f;
+                else
+                    if (alea.Next(100) < 1) Enemigos[i].DeltaX = deltaX/2.0f;
+                
+                int deltaY = alea.Next(3) - 1;
+                if (Enemigos[i].DeltaY == 0)
+                    Enemigos[i].DeltaY = deltaY/16.0f;
+                else
+                    if (alea.Next(100) < 1) Enemigos[i].DeltaY = deltaY/16.0f;
+
+                MoverEnemigo(ref Enemigos[i],Enemigos[i].DeltaX, Enemigos[i].DeltaY);
+            }
+        }
 
         //Indica si se ha producido algun cambio en el estado del modelo
         private static bool _hasChanged = true;

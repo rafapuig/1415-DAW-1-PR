@@ -22,7 +22,7 @@ namespace KeyboardDemo
         static DoubleBuffer.buffer ConsoleDobleBuffer = null;
 
         //Como vamos a dibujar las lineas de un grafico ascii (depende de si se usa doble buffer)
-        static Action<int, int, string> DrawAsciiModelLine
+        static Action<int, int, string, ConsoleColor, ConsoleColor> DrawAsciiModelLine
         {
             get
             {
@@ -32,8 +32,20 @@ namespace KeyboardDemo
         }
 
         //Como dibujar una linea en posicion x,y -> dibujarla en el buffer
-        static Action<int, int, string> DrawLineInBuffer = (int i, int j, string linea) => { ConsoleDobleBuffer.Draw(linea, i, j, 7); };
+        static Action<int, int, string, ConsoleColor, ConsoleColor> DrawLineInBuffer = (i, j, linea, foregroundColor, backgroundColor) =>
+        { 
+            ConsoleDobleBuffer.Draw(linea, i, j, GetAttributeFromConsoleColors(foregroundColor, backgroundColor)); 
+        };
 
+        static short GetAttributeFromConsoleColors()
+        {
+            return (short)(16 * (int)Console.BackgroundColor + (int)Console.ForegroundColor);
+        }
+
+        static short GetAttributeFromConsoleColors(ConsoleColor foregroundColor, ConsoleColor backgroundColor)
+        {
+            return (short)(16 * (int)backgroundColor + (int)foregroundColor);
+        }
 
         static void MainOld()
         {
@@ -75,7 +87,7 @@ namespace KeyboardDemo
 
             //Activar los temporizadores para llamar a Update y Draw cuando se cumpla el intervalo de tiempo
             var updateTimer = new Timer(state => { Update(); }, null, 0, PeriodTime);
-            var drawTimer = new Timer(state => { Draw(); }, null, 0, PeriodTime * 2);
+            var drawTimer = new Timer(state => { Draw(); }, null, 0, PeriodTime * 1);
 
             //Esperar a que se pulse la tecla de salida
             while (!Exit) { }              
@@ -89,6 +101,9 @@ namespace KeyboardDemo
         {
             Console.Title = "Demo teclado";
             Console.CursorVisible = false;
+            Console.BackgroundColor = ConsoleColor.DarkBlue;
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            
 
             //Dar un tamaño a la ventana de la consola (lo mas grande posible)
             Console.WindowWidth = Console.LargestWindowWidth;
@@ -129,6 +144,8 @@ namespace KeyboardDemo
                 Console.Beep(220, 22);
             }
 
+            Modelo.MoverEnemigos();
+
             if (Win32API.IsKeyPressed(ConsoleKey.Escape))
                 Exit = true;                    
         }
@@ -136,15 +153,26 @@ namespace KeyboardDemo
 
         //Dibujar el "mundo virual" o escena en la que transcurre el juego
         static void Draw()
-        {        
+        {  
+            //Si no hay cambios en el modelo volver sin hacer nada
             if (!Modelo.HasChanged) return;
 
-            if(DoubleBufferMode)
-                ConsoleDobleBuffer.Clear(); //Aplicar este metodo para limpiar el doble buffer (donde se crea la escena)
+            if (DoubleBufferMode)
+                ConsoleDobleBuffer.Clear(GetAttributeFromConsoleColors()); //Aplicar este metodo para limpiar el doble buffer (donde se crea la escena)
             else
                 Console.Clear();  //Cuando se dibuja directamente en la consola en lugar del doble buffer
-            
 
+            //Dibujar el siguiente frame a mostrar en la pantalla
+            DrawFrame();
+
+            if(DoubleBufferMode) ConsoleDobleBuffer.Print(); //Volcar el contenido del buffer en la pantalla (Consola) si usamos doble buffer
+            
+            //Cuando se termina el resfreco de pantalla la escena esta actualizada  
+            Modelo.ResetChanges();
+        }
+
+        private static void DrawFrame()
+        {
             string[] titulo = new string[] {
                     @" _____                         _______        _           _       ",
                     @"|  __ \                       |__   __|      | |         | |      ",
@@ -157,33 +185,47 @@ namespace KeyboardDemo
             //Dibujar el rotulo de Demo Teclado centrado en la pantalla y arriba del todo
             DrawASCIIModel(
                 (Console.WindowWidth - titulo[0].Length) / 2,
-                0, titulo);  
+                0, titulo,
+                ConsoleColor.Cyan, Console.BackgroundColor);
+
+
+            //Dibuja unos enemigos por ahi            
+
+            foreach(Enemigo e in Modelo.Enemigos)
+            {
+                DrawASCIIModel((int)e.PosX, (int)e.PosY, AsciiModels.EnemyShip, ConsoleColor.Magenta, Console.BackgroundColor);
+            }
 
             //Dibujar el jugador
-            DrawASCIIModel(Modelo.PlayerPosX, Modelo.PlayerPosY, Modelo.Player);
+            DrawASCIIModel(Modelo.PlayerPosX, Modelo.PlayerPosY, Modelo.Player, ConsoleColor.Yellow, Console.BackgroundColor);  
 
-            if(DoubleBufferMode) ConsoleDobleBuffer.Print(); //Volcar el contenido del buffer en la pantalla (Consola) si usamos doble buffer
-            
-            //Cuando se termina el resfreco de pantalla la escena esta actualizada  
-            Modelo.ResetChanges();
         }
 
 
         //Dibuja un modelo Ascii en la posicion X,Y indicada en el doble buffer o directamente en la consola
-        static void DrawASCIIModel(int x, int y, string[] asciiChars)
+        static void DrawASCIIModel(int x, int y, string[] asciiChars, ConsoleColor foregroundColor, ConsoleColor backgroundColor)
         {
             for (int i = 0; i < asciiChars.Length; i++)
             {
-                DrawAsciiModelLine(x, y + i, asciiChars[i]);
+                DrawAsciiModelLine(x, y + i, asciiChars[i], foregroundColor, backgroundColor);
             }
         }
 
 
         //Dibujar una linea en posicion X,Y directamente en la pantalla sin usar doble buffer
-        static void DrawLine(int x, int y, string line)
+        static void DrawLine(int x, int y, string line, ConsoleColor foregroundColor, ConsoleColor backgroundColor)
         {
+            ConsoleColor prevForegroundColor = Console.ForegroundColor;
+            ConsoleColor prevBackgroundColor = Console.BackgroundColor;
+
+            Console.ForegroundColor = foregroundColor;
+            Console.BackgroundColor = backgroundColor;
+
             Console.SetCursorPosition(x, y);
             Console.Write(line);
+
+            Console.ForegroundColor = prevForegroundColor;
+            Console.BackgroundColor = prevBackgroundColor;
         }
 
 
