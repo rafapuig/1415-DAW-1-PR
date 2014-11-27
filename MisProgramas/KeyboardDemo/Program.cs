@@ -13,7 +13,7 @@ namespace KeyboardDemo
         static bool Exit = false;
 
         //Intervalo en milisegundos que debe transcurrir entre actualizaciones del estado del modelo del juego
-        const int PeriodTime = 8;
+        const int PeriodTime = 1;
 
         //Inidicar si estamos utilizando un doble buffer para crear la escena y luego volcarla a la consola una vez generada
         static bool DoubleBufferMode { get { return ConsoleDobleBuffer != null; } }
@@ -87,11 +87,28 @@ namespace KeyboardDemo
 
             //Activar los temporizadores para llamar a Update y Draw cuando se cumpla el intervalo de tiempo
             var updateTimer = new Timer(state => { Update(); }, null, 0, PeriodTime);
-            var drawTimer = new Timer(state => { Draw(); }, null, 0, PeriodTime * 2);
+
+            //Thread drawer = new Thread(DrawWork);
+            //drawer.Start();
+
+            var drawTimer = new Timer(state => { Draw(); }, null, PeriodTime / 2+10, 16);  //PeriodTime * 4);
 
             //Esperar a que se pulse la tecla de salida
-            while (!Exit) { }              
+            while (!Exit) { } //Update();  }              
         
+        }
+
+        static void DrawWork()
+        {
+            var drawTimer = new Timer(state => { Draw(); }, null, 0, PeriodTime * 4);
+            //while (true)
+            //{
+            //    DateTime nextTime = DateTime.Now.AddMilliseconds(100);
+
+            //    while (DateTime.Now < nextTime) { }
+            //    Draw();
+            //}
+            //while (true) { Draw(); }
         }
 
         
@@ -141,7 +158,7 @@ namespace KeyboardDemo
             if (deltaX != 0 || deltaY != 0)
             {
                 Modelo.Mover(deltaX, deltaY);
-                Console.Beep(220, 22);
+                //Console.Beep(220, 22);
             }
 
             Modelo.MoverEnemigos();
