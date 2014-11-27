@@ -47,38 +47,38 @@ namespace KeyboardDemo
             return (short)(16 * (int)backgroundColor + (int)foregroundColor);
         }
 
-        static void MainOld()
-        {
-            System.Threading.TimerCallback updatingTime = state =>
-            {
-                Update();
-                //Draw();
-            };
+        //static void MainOld()
+        //{
+        //    System.Threading.TimerCallback updatingTime = state =>
+        //    {
+        //        Update();
+        //        //Draw();
+        //    };
 
-            System.Threading.TimerCallback drawingTime = state =>
-            {
-                Draw();
-                //new System.Threading.Thread(Draw);
-            };           
+        //    System.Threading.TimerCallback drawingTime = state =>
+        //    {
+        //        Draw();
+        //        //new System.Threading.Thread(Draw);
+        //    };           
 
-            Initialize();
-            Draw();
+        //    Initialize();
+        //    Draw();
 
-            var updateTimer = new System.Threading.Timer(updatingTime, null, 0, PeriodTime);
-            var drawTimer = new System.Threading.Timer(drawingTime, null, 0, PeriodTime * 2);
+        //    var updateTimer = new System.Threading.Timer(updatingTime, null, 0, PeriodTime);
+        //    var drawTimer = new System.Threading.Timer(drawingTime, null, 0, PeriodTime * 2);
 
-            while (!Exit) {
-                //Draw();
-                //System.Threading.Thread.Sleep(PeriodTime);
-            }
+        //    while (!Exit) {
+        //        //Draw();
+        //        //System.Threading.Thread.Sleep(PeriodTime);
+        //    }
 
-            //while (!Exit)
-            //{
-            //    Update();
-            //    Draw();
-            //    //System.Threading.Thread.Sleep(40);
-            //}            
-        }
+        //    //while (!Exit)
+        //    //{
+        //    //    Update();
+        //    //    Draw();
+        //    //    //System.Threading.Thread.Sleep(40);
+        //    //}            
+        //}
         
         static void Main()
         {  
@@ -87,7 +87,7 @@ namespace KeyboardDemo
 
             //Activar los temporizadores para llamar a Update y Draw cuando se cumpla el intervalo de tiempo
             var updateTimer = new Timer(state => { Update(); }, null, 0, PeriodTime);
-            var drawTimer = new Timer(state => { Draw(); }, null, 0, PeriodTime * 1);
+            var drawTimer = new Timer(state => { Draw(); }, null, 0, PeriodTime * 2);
 
             //Esperar a que se pulse la tecla de salida
             while (!Exit) { }              
@@ -101,8 +101,8 @@ namespace KeyboardDemo
         {
             Console.Title = "Demo teclado";
             Console.CursorVisible = false;
-            Console.BackgroundColor = ConsoleColor.DarkBlue;
-            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.BackgroundColor = ConsoleColor.Black;
+            Console.ForegroundColor = ConsoleColor.Gray;
             
 
             //Dar un tamaño a la ventana de la consola (lo mas grande posible)
@@ -118,7 +118,7 @@ namespace KeyboardDemo
             Modelo.GetViewPortHeight = () => Console.WindowHeight - 1;
 
             //Seleccionar la imagen ascci para representar al jugador
-            Modelo.Player = AsciiModels.Plane;
+            Modelo.Player = AsciiModels.MilleniumFalconVertical;
             
             //Posicionar el jugador en medio de la pantalla
             Modelo.Mover(
@@ -186,18 +186,18 @@ namespace KeyboardDemo
             DrawASCIIModel(
                 (Console.WindowWidth - titulo[0].Length) / 2,
                 0, titulo,
-                ConsoleColor.Cyan, Console.BackgroundColor);
+                ConsoleColor.Magenta, Console.BackgroundColor);
 
 
             //Dibuja unos enemigos por ahi            
 
             foreach(Enemigo e in Modelo.Enemigos)
             {
-                DrawASCIIModel((int)e.PosX, (int)e.PosY, AsciiModels.EnemyShip, ConsoleColor.Magenta, Console.BackgroundColor);
+                DrawASCIIModel((int)e.PosX, (int)e.PosY, AsciiModels.EnemyShip, ConsoleColor.Yellow, Console.BackgroundColor);
             }
 
             //Dibujar el jugador
-            DrawASCIIModel(Modelo.PlayerPosX, Modelo.PlayerPosY, Modelo.Player, ConsoleColor.Yellow, Console.BackgroundColor);  
+            DrawASCIIModel(Modelo.PlayerPosX, Modelo.PlayerPosY, Modelo.Player, ConsoleColor.White, Console.BackgroundColor);  
 
         }
 

@@ -8,7 +8,7 @@ namespace KeyboardDemo
 {
     class Alternativo
     {
-        static void MainX()
+        static void Main()
         {
             while (true)
             {
