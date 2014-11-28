@@ -156,9 +156,21 @@ namespace DoubleBuffer
                     tc++;
                 }
             }
-
-
         }
+
+
+        public void Draw(String str, int Width, int Height, 
+            ConsoleColor foregroundColor, ConsoleColor backgroundColor)
+        {
+            Draw(str, Width, Height, 
+                GetAttributeFromConsoleColors(foregroundColor, backgroundColor));
+        }
+
+        static short GetAttributeFromConsoleColors(ConsoleColor foregroundColor, ConsoleColor backgroundColor)
+        {
+            return (short)(16 * (int)backgroundColor + (int)foregroundColor);
+        }
+
         /// <summary>
         /// Prints the buffer to the screen.
         /// </summary>
@@ -186,6 +198,17 @@ namespace DoubleBuffer
                 buf[i].Char.AsciiChar = 32;
             }
         }
+
+        public void Clear(ConsoleColor backgroundColor, ConsoleColor foregroundColor)
+        {
+            Clear(GetAttributeFromConsoleColors(foregroundColor, backgroundColor));
+        }
+
+        public void Clear(ConsoleColor backgroundColor)
+        {
+            Clear(GetAttributeFromConsoleColors(ConsoleColor.Gray, backgroundColor));
+        }
+
 
         /// <summary>
         /// Pass in a buffer to change the current buffer.

@@ -13,7 +13,8 @@ namespace KeyboardDemo
         static bool Exit = false;
 
         //Intervalo en milisegundos que debe transcurrir entre actualizaciones del estado del modelo del juego
-        const int PeriodTime = 1;
+        const int UpdateRate = 1;
+        const int FrameRate = 16;
 
         //Inidicar si estamos utilizando un doble buffer para crear la escena y luego volcarla a la consola una vez generada
         static bool DoubleBufferMode { get { return ConsoleDobleBuffer != null; } }
@@ -33,19 +34,16 @@ namespace KeyboardDemo
 
         //Como dibujar una linea en posicion x,y -> dibujarla en el buffer
         static Action<int, int, string, ConsoleColor, ConsoleColor> DrawLineInBuffer = (i, j, linea, foregroundColor, backgroundColor) =>
-        { 
-            ConsoleDobleBuffer.Draw(linea, i, j, GetAttributeFromConsoleColors(foregroundColor, backgroundColor)); 
+        {
+            ConsoleDobleBuffer.Draw(linea, i, j, foregroundColor, backgroundColor);
         };
 
-        static short GetAttributeFromConsoleColors()
-        {
-            return (short)(16 * (int)Console.BackgroundColor + (int)Console.ForegroundColor);
-        }
+        //static short GetAttributeFromConsoleColors()
+        //{
+        //    return (short)(16 * (int)Console.BackgroundColor + (int)Console.ForegroundColor);
+        //}
 
-        static short GetAttributeFromConsoleColors(ConsoleColor foregroundColor, ConsoleColor backgroundColor)
-        {
-            return (short)(16 * (int)backgroundColor + (int)foregroundColor);
-        }
+        
 
         //static void MainOld()
         //{
@@ -86,12 +84,12 @@ namespace KeyboardDemo
             Draw();
 
             //Activar los temporizadores para llamar a Update y Draw cuando se cumpla el intervalo de tiempo
-            var updateTimer = new Timer(state => { Update(); }, null, 0, PeriodTime);
+            var updateTimer = new Timer(state => { Update(); }, null, 0, UpdateRate);
 
             //Thread drawer = new Thread(DrawWork);
             //drawer.Start();
 
-            var drawTimer = new Timer(state => { Draw(); }, null, PeriodTime / 2+10, 16);  //PeriodTime * 4);
+            var drawTimer = new Timer(state => { Draw(); }, null, UpdateRate, FrameRate);  //PeriodTime * 4);
 
             //Esperar a que se pulse la tecla de salida
             while (!Exit) { } //Update();  }              
@@ -100,7 +98,7 @@ namespace KeyboardDemo
 
         static void DrawWork()
         {
-            var drawTimer = new Timer(state => { Draw(); }, null, 0, PeriodTime * 4);
+            var drawTimer = new Timer(state => { Draw(); }, null, 0, UpdateRate * 4);
             //while (true)
             //{
             //    DateTime nextTime = DateTime.Now.AddMilliseconds(100);
@@ -175,7 +173,7 @@ namespace KeyboardDemo
             if (!Modelo.HasChanged) return;
 
             if (DoubleBufferMode)
-                ConsoleDobleBuffer.Clear(GetAttributeFromConsoleColors()); //Aplicar este metodo para limpiar el doble buffer (donde se crea la escena)
+                ConsoleDobleBuffer.Clear(Console.BackgroundColor); //Aplicar este metodo para limpiar el doble buffer (donde se crea la escena)
             else
                 Console.Clear();  //Cuando se dibuja directamente en la consola en lugar del doble buffer
 
