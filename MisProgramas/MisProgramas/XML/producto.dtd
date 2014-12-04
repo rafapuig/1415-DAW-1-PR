@@ -1,2 +1,0 @@
-﻿<!ELEMENT producto (nombre)>
-<!ELEMENT nombre (#PCDATA)>

@@ -1,6 +1,0 @@
-C:\Users\Rafa\Google Drive\Funcionario\2014-15\Programacion\Proyectos\MisProgramas\MisProgramas\bin\Debug\Programacion.exe.config
-C:\Users\Rafa\Google Drive\Funcionario\2014-15\Programacion\Proyectos\MisProgramas\MisProgramas\bin\Debug\Programacion.exe
-C:\Users\Rafa\Google Drive\Funcionario\2014-15\Programacion\Proyectos\MisProgramas\MisProgramas\bin\Debug\Programacion.pdb
-C:\Users\Rafa\Google Drive\Funcionario\2014-15\Programacion\Proyectos\MisProgramas\MisProgramas\obj\Debug\Programacion.csprojResolveAssemblyReference.cache
-C:\Users\Rafa\Google Drive\Funcionario\2014-15\Programacion\Proyectos\MisProgramas\MisProgramas\obj\Debug\Programacion.exe
-C:\Users\Rafa\Google Drive\Funcionario\2014-15\Programacion\Proyectos\MisProgramas\MisProgramas\obj\Debug\Programacion.pdb

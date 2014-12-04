@@ -1,9 +1,0 @@
-c:\users\rafa\documents\visual studio 2013\Projects\MisProgramas\MisProgramas\bin\Debug\MisProgramas.exe.config
-c:\users\rafa\documents\visual studio 2013\Projects\MisProgramas\MisProgramas\bin\Debug\MisProgramas.exe
-c:\users\rafa\documents\visual studio 2013\Projects\MisProgramas\MisProgramas\bin\Debug\MisProgramas.pdb
-c:\users\rafa\documents\visual studio 2013\Projects\MisProgramas\MisProgramas\obj\Debug\MisProgramas.csprojResolveAssemblyReference.cache
-c:\users\rafa\documents\visual studio 2013\Projects\MisProgramas\MisProgramas\obj\Debug\MisProgramas.exe
-c:\users\rafa\documents\visual studio 2013\Projects\MisProgramas\MisProgramas\obj\Debug\MisProgramas.pdb
-C:\Users\Rafa\Google Drive\Funcionario\2014-15\Programacion\Proyectos\MisProgramas\MisProgramas\bin\Debug\MisProgramas.exe.config
-C:\Users\Rafa\Google Drive\Funcionario\2014-15\Programacion\Proyectos\MisProgramas\MisProgramas\obj\Debug\MisProgramas.exe
-C:\Users\Rafa\Google Drive\Funcionario\2014-15\Programacion\Proyectos\MisProgramas\MisProgramas\obj\Debug\MisProgramas.pdb

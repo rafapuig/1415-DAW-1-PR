@@ -1,6 +1,0 @@
-C:\Users\Rafa\documents\visual studio 2013\Projects\MisProgramas\Programacion - 03 - Iniciacion\bin\Debug\Programacion - 03 - Iniciacion.exe.config
-C:\Users\Rafa\documents\visual studio 2013\Projects\MisProgramas\Programacion - 03 - Iniciacion\bin\Debug\Programacion - 03 - Iniciacion.exe
-C:\Users\Rafa\documents\visual studio 2013\Projects\MisProgramas\Programacion - 03 - Iniciacion\bin\Debug\Programacion - 03 - Iniciacion.pdb
-C:\Users\Rafa\documents\visual studio 2013\Projects\MisProgramas\Programacion - 03 - Iniciacion\obj\Debug\Programacion - 03 - Iniciacion.csprojResolveAssemblyReference.cache
-C:\Users\Rafa\documents\visual studio 2013\Projects\MisProgramas\Programacion - 03 - Iniciacion\obj\Debug\Programacion - 03 - Iniciacion.exe
-C:\Users\Rafa\documents\visual studio 2013\Projects\MisProgramas\Programacion - 03 - Iniciacion\obj\Debug\Programacion - 03 - Iniciacion.pdb

@@ -1,6 +1,0 @@
-C:\Users\Rafa\Google Drive\Funcionario\2014-15\Programacion\Proyectos\MisProgramas\Programacion\Binary Converter\BinaryConverter\bin\Debug\BinaryConverter.dll.config
-C:\Users\Rafa\Google Drive\Funcionario\2014-15\Programacion\Proyectos\MisProgramas\Programacion\Binary Converter\BinaryConverter\bin\Debug\BinaryConverter.dll
-C:\Users\Rafa\Google Drive\Funcionario\2014-15\Programacion\Proyectos\MisProgramas\Programacion\Binary Converter\BinaryConverter\bin\Debug\BinaryConverter.pdb
-C:\Users\Rafa\Google Drive\Funcionario\2014-15\Programacion\Proyectos\MisProgramas\Programacion\Binary Converter\BinaryConverter\obj\Debug\Binary Converter.csprojResolveAssemblyReference.cache
-C:\Users\Rafa\Google Drive\Funcionario\2014-15\Programacion\Proyectos\MisProgramas\Programacion\Binary Converter\BinaryConverter\obj\Debug\BinaryConverter.dll
-C:\Users\Rafa\Google Drive\Funcionario\2014-15\Programacion\Proyectos\MisProgramas\Programacion\Binary Converter\BinaryConverter\obj\Debug\BinaryConverter.pdb
