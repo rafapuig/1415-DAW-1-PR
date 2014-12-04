@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Clases;
+using Programacion.POO.Encapsulacion;
+
 
 namespace TestPersona
 {
@@ -11,13 +12,22 @@ namespace TestPersona
     {
         static void Main()
         {
+            Persona p1 = new Persona(Genero.Hombre, "Luis", "Lopez", "gil");
+            Persona p2 = new Persona(Genero.Hombre, "Ruben", "Perez", "Oso");
+
+            Persona p4;
+            Persona p3 = new Persona(Genero.Mujer, "Raquel", p4, null);
+        }
+
+        static void MainOld()
+        {
             //string res = Persona.CapitalizarIniciales("jose luis");
             //Console.WriteLine(res);            
             
             Persona juan = Persona.Create(Genero.Hombre, "juan jose", "Lopez");
             juan.Padre = Persona.Adan;
             juan.Madre = Persona.Eva;
-            Console.WriteLine(juan[1]);
+            Console.WriteLine(juan[OrdenApellido.Segundo]);
 
             Console.WriteLine(juan.NombreCompleto + " (" + juan.Genero + ")");
             Console.WriteLine(juan);

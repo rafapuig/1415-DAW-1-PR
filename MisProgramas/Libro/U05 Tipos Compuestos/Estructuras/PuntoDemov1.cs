@@ -49,7 +49,9 @@ namespace Programacion.TiposCompuestos.Estructuras
             punto1.Y = 3;
 
             Punto punto2;
-            punto2 = punto1;    // punto2.x = punto2.x e punto2.y = punto2.y
+            punto2 = punto1;    // punto2.x = punto1.x e punto2.y = punto1.y
+
+            punto1.X = 7;
 
             Console.WriteLine("Punto ({0},{1})", punto2.X, punto2.Y);
             MostrarPuntoPorConsola(punto2.X, punto2.Y);

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Programacion.POO.Encapsulacion
+namespace Programacion.POO.Herencia
 {
     public enum EstadoCivil { Soltero, Casado, Divorciado, Viudo }
     public enum Genero { Hombre, Mujer }
@@ -13,7 +13,7 @@ namespace Programacion.POO.Encapsulacion
 
     public class Persona
     {
-        public static Persona Adan { get; private set; }
+        public static readonly Persona Adan;
         public static readonly Persona Eva; //Eva no puede asignarse salvo en el constructor de la clase (static)
 
         static Persona()
@@ -29,7 +29,7 @@ namespace Programacion.POO.Encapsulacion
         public readonly DateTime Creacion; // = DateTime.Now;
 
         //Constructores
-        private Persona(Genero genero, string nombre)
+        protected Persona(Genero genero, string nombre)
         {
             Poblacion++;
 
@@ -42,7 +42,7 @@ namespace Programacion.POO.Encapsulacion
             //this.Madre = Eva;
         }
 
-        private Persona(Genero genero, string nombre, string apellido)
+        protected Persona(Genero genero, string nombre, string apellido)
             : this(genero, nombre)
         {
             this.Apellido = apellido;
@@ -58,12 +58,8 @@ namespace Programacion.POO.Encapsulacion
 
         private static string ObtenerApellidoProgenitor(Persona progenitor)
         {
-            //if (progenitor == null) return String.Empty;
-            //return progenitor[OrdenApellido.Primero];
-
-            return progenitor != null ? 
-                progenitor[OrdenApellido.Primero] 
-                : String.Empty;
+            if (progenitor == null) return String.Empty;
+            return progenitor[OrdenApellido.Primero];            
         }
 
         //Por motivos pedagogicos se obtiene el primer apellido de los progenitores 
@@ -71,15 +67,20 @@ namespace Programacion.POO.Encapsulacion
         public Persona(Genero genero, string nombre, Persona padre, Persona madre)
             : this(genero, nombre,
             ObtenerApellidoProgenitor(padre),
-            madre != null ? madre[OrdenApellido.Primero] : String.Empty)
+            ObtenerApellidoProgenitor(madre))
         {
             this.Padre = padre;
             this.Madre = madre;
         }
 
-        public static Persona Create(Genero genero, string nombre, string apellido)
+        public static Persona Create(Genero genero, string nombre, string apellido1, string apellido2)
         {
-            return new Persona(genero, nombre, apellido);
+            return new Persona(genero, nombre, apellido1, apellido2);
+        }
+
+        public static Persona Create(Genero genero, string nombre, Persona padre, Persona madre)
+        {
+            return new Persona(genero, nombre, padre, madre);
         }
 
         public static string CapitalizarIniciales(string texto)
@@ -122,17 +123,7 @@ namespace Programacion.POO.Encapsulacion
                 this.nombre = CapitalizarIniciales(value); 
             }
         }
-        
-        //public void SetNombre(string queNombre)
-        //{
-        //    this.nombre = queNombre;
-        //}
-
-        //public string GetNombre()
-        //{
-        //    return this.nombre;
-        //}
-                
+                  
 
         public static readonly int TotalApellidos = 2;
         
@@ -236,12 +227,7 @@ namespace Programacion.POO.Encapsulacion
                 return sb.ToString(); 
             }
         }
-                
-        //public string NombreCompleto()
-        //{
-        //    return this.Nombre + " " + this.Apellido;
-        //}
-
+        
         
         public string Presentarse()
         {
@@ -261,8 +247,7 @@ namespace Programacion.POO.Encapsulacion
         }
 
 
-        public readonly Genero Genero;
-        //public Genero Genero { get; set; }
+        public readonly Genero Genero;        
        
         private Persona padre;
         public Persona Padre
@@ -310,7 +295,7 @@ namespace Programacion.POO.Encapsulacion
 
         public bool Huerfano
         {
-            get { return this.Padre == null || this.Madre == null; }
+            get { return this.Padre == null && this.Madre == null; }
         }
 
         public bool Huerfano(Vinculo vinculo)
@@ -327,10 +312,7 @@ namespace Programacion.POO.Encapsulacion
         }
 
         public static bool SonPrimos(Persona p1, Persona p2)
-        {
-            //if (p1 == null) return false;
-            //if (p2 == null) return false;            
-
+        {    
             if (SonHermanos(p1.Padre, p2.Padre)) return true;
             if (SonHermanos(p1.Padre, p2.Madre)) return true;
 
@@ -365,53 +347,10 @@ namespace Programacion.POO.Encapsulacion
             return tio.EsTio(this);
         }
 
-
-        public Persona AbueloPaterno
-        {
-            get
-            {
-                return Abuelo(Vinculo.Paterno);                
-            }
-        }
-        
-        public Persona AbuelaPaterna
-        {
-            get
-            {                
-                return Abuelo(Vinculo.Paterno, Genero.Mujer);
-            }
-        }
-
-        public Persona AbueloMaterno
-        {
-            get
-            {
-                if (this.Madre != null) return this.Madre.Padre;
-                return null;
-            }
-        }
-
-        public Persona AbuelaMaterna
-        {
-            get
-            {
-                if (this.Madre != null) return this.Madre.Madre;
-                return null;
-            }
-        }
-
         public Persona Abuelo(Vinculo vinculo)
         {
-            switch (vinculo)
-            {
-                case Vinculo.Materno:
-                    if (this.Madre != null) return this.Madre.Padre;
-                    break;
-                case Vinculo.Paterno:
-                    if (this.Padre != null) return this.Madre.Padre;
-                    break;                
-            }
-            return null;
+            //Delegamos en el metodo Abuelo, pasando el vinculo y como genero hombre
+            return Abuelo(vinculo, Genero.Mujer);
         }
 
         public Persona Abuela(Vinculo vinculo)
@@ -420,7 +359,7 @@ namespace Programacion.POO.Encapsulacion
             return Abuelo(vinculo, Genero.Mujer);
         }
 
-        public Persona Abuelo(Vinculo vinculo, Genero genero)
+        private Persona Abuelo(Vinculo vinculo, Genero genero)
         {
             Persona prognitor = null;
 

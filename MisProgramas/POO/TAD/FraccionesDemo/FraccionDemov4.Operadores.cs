@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Programacion.TiposCompuestos.Estructuras.Inmutable.Operadores
+namespace Programacion.POO.TAD.Estructuras.Inmutable.Operadores
 {
     struct Fraccion
     {

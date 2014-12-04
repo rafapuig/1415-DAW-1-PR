@@ -51,11 +51,8 @@
     <Compile Include="Ejemplos\ConsoleBeepDemo.cs" />
     <Compile Include="Ejemplos\MaximoDemo.cs" />
     <Compile Include="Ejemplos\Nota.cs" />
-    <Compile Include="Estructuras\Fracciones\FraccionDemo.cs" />
     <Compile Include="Enums\EnumsDemo.cs" />
-    <Compile Include="Estructuras\Fracciones\FraccionDemov4.Operadores.cs" />
-    <Compile Include="Estructuras\Fracciones\FraccionDemov3.Inmutable.cs" />
-    <Compile Include="Estructuras\Fracciones\FraccionDemov2.cs" />
+    <Compile Include="Estructuras\Fracciones\FraccionDemo.cs" />
     <Compile Include="Estructuras\PartidoInfo.cs" />
     <Compile Include="Estructuras\PuntoDemov2.cs" />
     <Compile Include="Estructuras\PuntoDemov1.cs" />

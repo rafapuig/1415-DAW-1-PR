@@ -1,11 +1,11 @@
 ﻿using System;
 
-namespace Programacion.TiposCompuestos.Estructuras.Inmutable
+namespace Programacion.POO.TAD.Estructuras
 {
     struct Fraccion
     {
-        public readonly long Numerador;
-        public readonly long Denominador;
+        public long Numerador;
+        public long Denominador;
 
         public  Fraccion(long numerador, long denominador)
         {
@@ -29,7 +29,10 @@ namespace Programacion.TiposCompuestos.Estructuras.Inmutable
         public Fraccion ToDenominador(long denominadorObjetivo)
         {
             long factor = denominadorObjetivo / this.Denominador;
-            return new Fraccion(this.Numerador * factor, denominadorObjetivo);            
+            Fraccion f;
+            f.Numerador = this.Numerador * factor;
+            f.Denominador = denominadorObjetivo;
+            return f;
         }
 
         static long MCM(long a, long b)
@@ -56,35 +59,47 @@ namespace Programacion.TiposCompuestos.Estructuras.Inmutable
         public Fraccion Reducir()
         {
             long mcd = MCD(this.Numerador, this.Denominador);
-            return new Fraccion(this.Numerador / mcd, this.Denominador / mcd);            
+            Fraccion s;
+            s.Numerador = this.Numerador / mcd;
+            s.Denominador = this.Denominador / mcd;
+            return s;
         }
 
         public Fraccion Sumar(Fraccion f2)
         {
-            long mcm = MCM(this.Denominador, f2.Denominador);            
+            long mcm = MCM(this.Denominador, f2.Denominador);
+            Fraccion suma;
 
             this = this.ToDenominador(mcm);
             f2 = f2.ToDenominador(mcm);
 
-            return new Fraccion(this.Numerador + f2.Numerador, mcm).Reducir();
+            suma.Denominador = mcm;
+            suma.Numerador = this.Numerador + f2.Numerador;
+
+            //suma.Numerador = f1.Numerador * mcm / f1.Denominador + f2.Numerador * mcm / f2.Denominador;
+            return suma.Reducir();
         }
 
         public Fraccion Restar(Fraccion f2)
         {
-            return this.Sumar(new Fraccion(-f2.Numerador, f2.Denominador));
+            f2.Numerador = -f2.Numerador;
+            return this.Sumar(f2);
         }
 
-        public Fraccion Multiplicar( Fraccion f2)
+        public Fraccion Multiplicar(Fraccion f2)
         {
-            Fraccion mult = new Fraccion(
-                this.Numerador * f2.Numerador,
-                this.Denominador * f2.Denominador);           
+            Fraccion mult;
+            mult.Denominador = this.Denominador * f2.Denominador;
+            mult.Numerador = this.Numerador * f2.Numerador;
             return mult.Reducir();
         }
 
         public Fraccion Invertir()
         {
-            return new Fraccion(this.Denominador,this.Numerador);   
+            Fraccion fi;
+            fi.Numerador = this.Denominador;
+            fi.Denominador = this.Numerador;
+            return fi;
         }
         
         public Fraccion Dividir(Fraccion f2)
@@ -122,11 +137,11 @@ namespace Programacion.TiposCompuestos.Estructuras.Inmutable
 
             bool restar1 = (iPeriodo % 10 >= 5) && cifrasAnteperiodo + cifrasPeriodo + partes[0].Length == 15;
 
-            
-            long numerador = iNumeroEntero - (restar1 ? 1 : 0) - iParteNoPeriodica;
-            long denominador = iDenominador;
+            Fraccion f;
+            f.Numerador = iNumeroEntero - (restar1 ? 1 : 0) - iParteNoPeriodica;
+            f.Denominador = iDenominador;
 
-            return new Fraccion(numerador, denominador).Reducir();
+            return f.Reducir();
         }
     }
 
@@ -134,6 +149,8 @@ namespace Programacion.TiposCompuestos.Estructuras.Inmutable
     {
         static void Main()
         {
+            Fraccion f = new Fraccion(1, 3);
+
             TestSumar();
             TestRestar();
             TestMultiplicar();
@@ -150,8 +167,13 @@ namespace Programacion.TiposCompuestos.Estructuras.Inmutable
 
         static void TestSumar()
         {
-            Fraccion f1 = new Fraccion(2, 30);
-            Fraccion f2 = new Fraccion(3, 15);                
+            Fraccion f1, f2;
+
+            f1.Numerador = 2;
+            f1.Denominador = 30;
+
+            f2.Numerador = 3;
+            f2.Denominador = 15;            
             
             Fraccion fm = f1.Sumar(f2);
             Console.WriteLine("{0} + {1} = {2}", f1, f2, fm);
@@ -159,8 +181,13 @@ namespace Programacion.TiposCompuestos.Estructuras.Inmutable
 
         static void TestRestar()
         {
-            Fraccion f1 = new Fraccion(25, 30);
-            Fraccion f2 = new Fraccion(5, 15);      
+            Fraccion f1, f2;
+
+            f1.Numerador = 25;
+            f1.Denominador = 30;
+
+            f2.Numerador = 5;
+            f2.Denominador = 15;
 
             Fraccion fm = f1.Restar(f2);
             Console.WriteLine("{0} - {1} = {2}", f1, f2, fm);
@@ -168,8 +195,13 @@ namespace Programacion.TiposCompuestos.Estructuras.Inmutable
 
         static void TestMultiplicar()
         {
-            Fraccion f1 = new Fraccion(2, 3);
-            Fraccion f2 = new Fraccion(3, 5);  
+            Fraccion f1, f2;
+            
+            f1.Numerador = 2;
+            f1.Denominador = 3;
+            
+            f2.Numerador = 3;
+            f2.Denominador = 5;
 
             Fraccion fm = f1.Multiplicar(f2);
             Console.WriteLine("{0} * {1} = {2}", f1, f2, fm);
@@ -177,7 +209,10 @@ namespace Programacion.TiposCompuestos.Estructuras.Inmutable
 
         static void TestFromDouble()
         {
-            Fraccion f = new Fraccion(6666, 9999);                     
+            Fraccion f;
+
+            f.Numerador = 6666;
+            f.Denominador = 9999;
 
             double d = 0.142857; //1 / 7.0; //2.46; //0.16; //57.18; //629/11.0;
             f = Fraccion.FromDouble(d, 6);
@@ -186,9 +221,9 @@ namespace Programacion.TiposCompuestos.Estructuras.Inmutable
 
         static void MostrarFraccion(Fraccion f)
         {
-            Console.Write(f.ToString());
+            //Console.Write(f.ToString());
+            Console.Write(f);
         }
                 
     }
-
 }
