@@ -19,7 +19,7 @@ namespace Programacion.TiposCompuestos.Ordenacion
         {
             int[] numeros = { 5, 9, 2, 4, 8, 1, 3, 7, 6 };//{ 12, 5, 3, 13, 2, 9, 7 };
 
-            numeros.QuickSort(0, numeros.Length - 1, null, null, MostrarOrdenacionQuickSort);
+            numeros.Sort(0, numeros.Length - 1, null, null, MostrarOrdenacionQuickSort);
 
             MostrarItems(numeros);         
         }
@@ -81,7 +81,7 @@ namespace Programacion.TiposCompuestos.Ordenacion
 
             System.Diagnostics.Stopwatch cronometro = System.Diagnostics.Stopwatch.StartNew();
             
-            QuickSort.QuickSort(valores, 0, valores.Length - 1,
+            QuickSort.Sort(valores, 0, valores.Length - 1,
                 () => contadorComparaciones++,
                 () => contadorAsignaciones++);
 

@@ -15,7 +15,7 @@ namespace TestPersona
             Persona p1 = new Persona(Genero.Hombre, "Luis", "Lopez", "gil");
             Persona p2 = new Persona(Genero.Hombre, "Ruben", "Perez", "Oso");
 
-            Persona p4;
+            Persona p4 = null;
             Persona p3 = new Persona(Genero.Mujer, "Raquel", p4, null);
         }
 

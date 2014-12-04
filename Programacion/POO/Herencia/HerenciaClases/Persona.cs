@@ -293,7 +293,7 @@ namespace Programacion.POO.Herencia
         }
 
 
-        public bool Huerfano
+        public bool HuerfanoTotal
         {
             get { return this.Padre == null && this.Madre == null; }
         }

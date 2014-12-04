@@ -10,7 +10,7 @@ namespace Programacion.TiposCompuestos.Ordenacion
 
     static class QuickSort
     {
-        public static void QuickSort<T>(this T[] items, int primero, int ultimo,
+        public static void Sort<T>(this T[] items, int primero, int ultimo,
             Action comparacion = null, 
             Action asignacion = null, 
             MostrarOrdenacionQuickSort<T> show = null)
@@ -44,8 +44,8 @@ namespace Programacion.TiposCompuestos.Ordenacion
 
             } while (i <= j);
 
-            if (primero < j) QuickSort(items, primero, j, comparacion, asignacion, show);
-            if (i < ultimo) QuickSort(items, i, ultimo, comparacion, asignacion, show);
+            if (primero < j) Sort(items, primero, j, comparacion, asignacion, show);
+            if (i < ultimo) Sort(items, i, ultimo, comparacion, asignacion, show);
         }
     }
 

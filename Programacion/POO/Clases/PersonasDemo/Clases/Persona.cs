@@ -122,6 +122,13 @@ namespace Programacion.POO.Encapsulacion
                 this.nombre = CapitalizarIniciales(value); 
             }
         }
+
+
+        public bool EsTocayoDe(Persona otra)
+        {
+            if (otra == null) throw new ArgumentNullException("otra", "No se ha proporcionado una referencia a una persona");
+            return this.Nombre == otra.Nombre;
+        }
         
         //public void SetNombre(string queNombre)
         //{
@@ -242,12 +249,12 @@ namespace Programacion.POO.Encapsulacion
         //    return this.Nombre + " " + this.Apellido;
         //}
 
-        
+
         public string Presentarse()
         {
-            return "Hola, me llamo " + this.NombreCompleto;
+            return this.Nombre + ":" + "Hola, me llamo " + this.NombreCompleto;
         }
-        
+
         public string PresentarA(Persona otra)
         {
             if (otra == null)
@@ -255,10 +262,16 @@ namespace Programacion.POO.Encapsulacion
 
             //Si se trata de mi mismo, me presento
             if (otra == this)
-                return this.Presentarse();          
+                return this.Presentarse();
 
-            return "Te presento a " + otra.NombreCompleto;
+            return this.Nombre + ":" + "Te presento a " + otra.NombreCompleto;
         }
+
+        public string SaludarA(Persona otra)
+        {
+            return this.Nombre + ": " + "Hola " + otra.Nombre + "! ¿Como estas?";
+        }
+
 
 
         public readonly Genero Genero;
@@ -308,7 +321,7 @@ namespace Programacion.POO.Encapsulacion
         }
 
 
-        public bool Huerfano
+        public bool HuerfanoTotal
         {
             get { return this.Padre == null || this.Madre == null; }
         }

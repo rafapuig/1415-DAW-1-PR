@@ -32,17 +32,20 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>Estado.Countdown.CamposEstaticos.Protegido.Programa</StartupObject>
+  </PropertyGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CamposInstancia.cs" />
+    <Compile Include="Lector\CamposInstancia.cs" />
     <Compile Include="Countdown\CamposEstaticos.cs" />
     <Compile Include="Countdown\CamposInstancia.cs" />
     <Compile Include="Countdown\CamposEstaticos.Protegido.cs" />
     <Compile Include="Countdown\SinEstado.cs" />
-    <Compile Include="SinEstado.cs" />
-    <Compile Include="CamposEstaticos.cs" />
+    <Compile Include="Lector\SinEstado.cs" />
+    <Compile Include="Lector\CamposEstaticos.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
