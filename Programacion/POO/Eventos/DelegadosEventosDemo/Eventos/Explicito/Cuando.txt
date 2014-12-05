@@ -1,0 +1,9 @@
+﻿* When the event accessors are merely relays for another class that is broadcasting
+the event.
+
+• When the class exposes a large number of events, where most of the time very
+few subscribers exist, such as a Windows control. In such cases, it is better to
+store the subscriber’s delegate instances in a dictionary, since a dictionary will
+contain less storage overhead than dozens of null delegate field references.
+
+• When explicitly implementing an interface that declares an event.
