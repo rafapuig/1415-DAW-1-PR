@@ -11,55 +11,64 @@ namespace Programacion.POO.Herencia
     public enum Vinculo { Materno, Paterno }
     public enum OrdenApellido { Primero, Segundo }
 
-    public class Persona
+    public partial class Persona
     {
-        public static readonly Persona Adan;
-        public static readonly Persona Eva; //Eva no puede asignarse salvo en el constructor de la clase (static)
+        ////Adan y Eva
+        ////se instanciaran como objetos en las clases que derivan de Persona
+        //public static Persona Adan { get; protected set; }
+        //public static Persona Eva { get; protected set; }
 
+
+        //Campos estatico (o compartido) solo exite un campo Poblacion comun para todos los objetos personas,
+        //por tanto, pertenece a la clase directamente
+        public static int Poblacion { get; private set; }
+
+        //Constructor compartido por todas las instancias de la clase persona
         static Persona()
         {
-            Adan = new Persona(Genero.Hombre, "Adan");
-            Eva = new Persona(Genero.Mujer, "Eva");
+            Persona.Poblacion = 0;  //Al principio la poblacion de personas es 0 y se incrementa conforme se crean personas
         }
-
-        //private static int _Poblacion = 0;
-        public static int Poblacion { get; private set; }
+        
 
         //Campo de solo lectura
         public readonly DateTime Creacion; // = DateTime.Now;
 
+        public readonly Genero Genero;  //El genero no puede cambiar una vez construido el objeto Persona
+        //public Genero Genero { get; set; }
+        //public abstract Genero Genero { get; protected set; }
+
+        #region "Constructores de instancia"
+
         //Constructores
         protected Persona(Genero genero, string nombre)
         {
-            Poblacion++;
+            Poblacion++;    //Cuando se crea una nueva persona, la poblacion de objetos Persona aumenta en una unidad
 
-            this.Creacion = DateTime.Now;
-            this.EstadoCivil = EstadoCivil.Soltero;
+            this.Creacion = DateTime.Now;   //Registar el momento en que se crea una instancia (objeto) Persona
+            this.EstadoCivil = EstadoCivil.Soltero; //Todas las instancias de persona "nacen" solteras
             this.Genero = genero;
-            this.Nombre = nombre;
-
-            //this.Padre = Adan;
-            //this.Madre = Eva;
+            this.Nombre = nombre;   //Asignar la propiedad Nombre y no el campo directamente para dar oportunidad a la logica de validacion
         }
 
-        protected Persona(Genero genero, string nombre, string apellido)
-            : this(genero, nombre)
+        private Persona(Genero genero, string nombre, string apellido)
+            : this(genero, nombre)  //Delegar en el construtor de personas con menos parametros
         {
             this.Apellido = apellido;
         }
 
 
-        public Persona(Genero genero, string nombre, string apellido1, string apellido2)
+        protected Persona(Genero genero, string nombre, string apellido1, string apellido2)
             : this(genero, nombre, apellido1)
         {
-            //this.apellidos[(int)OrdenApellido.Segundo] = apellido2;
             this[OrdenApellido.Segundo] = apellido2;
         }
+
 
         private static string ObtenerApellidoProgenitor(Persona progenitor)
         {
             if (progenitor == null) return String.Empty;
-            return progenitor[OrdenApellido.Primero];            
+
+            return progenitor[OrdenApellido.Primero]; //Los progenitores otorgan a sus descencientes su primer apellido
         }
 
         //Por motivos pedagogicos se obtiene el primer apellido de los progenitores 
@@ -67,23 +76,17 @@ namespace Programacion.POO.Herencia
         public Persona(Genero genero, string nombre, Persona padre, Persona madre)
             : this(genero, nombre,
             ObtenerApellidoProgenitor(padre),
-            ObtenerApellidoProgenitor(madre))
+            madre != null ? madre[OrdenApellido.Primero] : String.Empty)
         {
             this.Padre = padre;
             this.Madre = madre;
         }
 
-        public static Persona Create(Genero genero, string nombre, string apellido1, string apellido2)
-        {
-            return new Persona(genero, nombre, apellido1, apellido2);
-        }
+#endregion
 
-        public static Persona Create(Genero genero, string nombre, Persona padre, Persona madre)
-        {
-            return new Persona(genero, nombre, padre, madre);
-        }
+        #region "Nombre y apellidos"
 
-        public static string CapitalizarIniciales(string texto)
+        protected static string CapitalizarIniciales(string texto)
         {
             //Comprobar que tenemos un texto no nulo antes de dividirlo en partes
             if (String.IsNullOrEmpty(texto)) return String.Empty;
@@ -91,12 +94,9 @@ namespace Programacion.POO.Herencia
             //Separar un texto en palabras
             string[] partes = texto.Split(' ');
 
-            //Para cada palabra que compone el texto (ahora cono vector de palabras)...
+            //Para cada palabra que compone el texto (ahora como vector de palabras)...
             for (int i = 0; i < partes.Length; i++)
             {
-                //StringBuilder sb = new StringBuilder(partes[i]);
-                //sb[0] = Char.ToUpper(sb[0]);
-
                 //Obtener las letras que de que se compone una palabra
                 char[] letras = partes[i].ToCharArray();
 
@@ -111,57 +111,113 @@ namespace Programacion.POO.Herencia
             return String.Join(" ", partes);
         }
 
+
         string nombre;
         public string Nombre
         {
             get { return this.nombre; }
-            set 
-            { 
+            set
+            {
                 if (String.IsNullOrEmpty(value))
                     throw new ArgumentException("El nombre no es valido", "Nombre");
-                
-                this.nombre = CapitalizarIniciales(value); 
+
+                this.nombre = CapitalizarIniciales(value);
             }
         }
-                  
+
+
+        public bool EsTocayoDe(Persona otra)
+        {
+            if (otra == null) throw new ArgumentNullException("otra", "No se ha proporcionado una referencia a una persona");
+            return this.Nombre == otra.Nombre;
+        }
+
+
 
         public static readonly int TotalApellidos = 2;
-        
+
         //No permitirmos que se cambie la referencia por otro array distinto al que le asignamos aqui
         private string[] apellidos = new string[TotalApellidos];
-        
-        //vamos a comentarlo porque no permitimos modificacion de los elementos del array
-        //public string[] Apellidos
-        //{
-        //    get { return this.apellidos; }        
-        //}
 
-        //Propiedad indice devuelde un apellido u otro
+
+        //Propiedad indice devuelve un apellido u otro
         public string this[OrdenApellido parte]
         {
             get { return this.apellidos[(int)parte]; }
             private set
             {
                 this.apellidos[(int)parte] = CapitalizarIniciales(value);
-            }            
+            }
         }
 
-        public string Apellido 
+        public string Apellido
         {
             get { return this[OrdenApellido.Primero]; }
             set { this[OrdenApellido.Primero] = value; }
         }
 
+        public string SegundoApellido
+        {
+            get { return this[OrdenApellido.Segundo]; }
+            set { this[OrdenApellido.Segundo] = value; }
+        }
+
+
+        //Propiedad Nombre Completo (solo lectura), se obtiene a partir de otras propiedades del objeto
+        public string NombreCompleto
+        {
+            get
+            {
+                StringBuilder sb = new StringBuilder(this.nombre);
+                foreach (string apellido in this.apellidos)
+                {
+                    if (!String.IsNullOrEmpty(apellido))
+                        sb.AppendFormat(" {0}", apellido);
+                }
+                return sb.ToString();
+            }
+        }
+
+        #endregion
+
+        #region "Saludos y presentaciones"
+
+        public string Presentarse()
+        {
+            return this.Nombre + ":" + "Hola, me llamo " + this.NombreCompleto;
+        }
+
+        public string SaludarA(Persona otra)
+        {
+            return this.Nombre + ": " + "Hola " + otra.Nombre + "! ¿Como estas?";
+        }
+
+        public string PresentarA(Persona otra)
+        {
+            if (otra == null)
+                throw new ArgumentNullException("No se ha proporcionado una referencia a una persona", "otra");
+
+            //Si se trata de mi mismo, me presento
+            if (otra == this)
+                return this.Presentarse();
+
+            return this.Nombre + ":" + "Te presento a " + otra.NombreCompleto;
+        }
+        
+        #endregion
+
+
         public DateTime FechaNacimiento { get; set; }
 
-        public int Edad 
-        { 
-            get 
-            {
-                return DateTime.Now.Year - this.FechaNacimiento.Year +
-                    DateTime.Now.DayOfYear < this.FechaNacimiento.DayOfYear ? -1 : 0;
-            } 
+
+        //Reemplazar la representacion textual del objeto
+        public override string ToString()
+        {
+            return this.NombreCompleto + " (" + this.Genero + ") [" + this.FechaNacimiento + "] " + this.EstadoCivil;
         }
+
+
+        #region "Estado Civil, Casarse, Divorciarse ..."
 
         public EstadoCivil EstadoCivil { get; private set; }
 
@@ -174,14 +230,14 @@ namespace Programacion.POO.Herencia
         }
 
         public bool Casado { get { return this.conyuge != null; } } // o this.EstadoCivil == EstadoCivil.Casado;
-        
+
         public void Casarse(Persona prometido)
         {
             //Comprobar prometido existe
             if (prometido == null)
                 throw new ArgumentNullException("prometido",
                     "No se ha proporcionado una referencia a la persona prometida");
-            
+
             //Comprobar que no se casa consigo mismo
             if (this == prometido)
                 throw new ArgumentException("Una persona no puede casarse consigo misma");
@@ -213,42 +269,12 @@ namespace Programacion.POO.Herencia
             this.conyuge = null;
         }
 
-
-        public string NombreCompleto
-        {            
-            get 
-            {
-                StringBuilder sb = new StringBuilder(this.nombre);
-                foreach(string apellido in this.apellidos)
-                {
-                    if (!String.IsNullOrEmpty(apellido))
-                        sb.AppendFormat(" {0}", apellido);
-                }
-                return sb.ToString(); 
-            }
-        }
+        #endregion
         
         
-        public string Presentarse()
-        {
-            return "Hola, me llamo " + this.NombreCompleto;
-        }
-        
-        public string PresentarA(Persona otra)
-        {
-            if (otra == null)
-                throw new ArgumentNullException("No se ha proporcionado una referencia a una persona", "otra");
 
-            //Si se trata de mi mismo, me presento
-            if (otra == this)
-                return this.Presentarse();          
+        #region "Padre, Madre y Horfandad"
 
-            return "Te presento a " + otra.NombreCompleto;
-        }
-
-
-        public readonly Genero Genero;        
-       
         private Persona padre;
         public Persona Padre
         {
@@ -258,7 +284,7 @@ namespace Programacion.POO.Herencia
                 //Comprobar que el padre es un hombre
                 if (value != null && value.Genero != Genero.Hombre)
                     throw new ArgumentException("El padre debe ser un hombre");
-                
+
                 this.padre = value;
             }
         }
@@ -277,6 +303,28 @@ namespace Programacion.POO.Herencia
             }
         }
 
+        public bool HuerfanoTotal
+        {
+            get { return this.Padre == null || this.Madre == null; }
+        }
+
+        public bool Huerfano(Vinculo vinculo)
+        {
+            switch (vinculo)
+            {
+                case Vinculo.Materno:
+                    return this.Madre == null;
+
+                case Vinculo.Paterno:
+                    return this.Padre == null;
+            }
+            return false;
+        }
+
+        #endregion
+
+
+        #region "Parentescos"
 
         public static bool SonHermanos(Persona p1, Persona p2)
         {
@@ -292,33 +340,17 @@ namespace Programacion.POO.Herencia
             return SonHermanos(this, otra);
         }
 
-
-        public bool HuerfanoTotal
-        {
-            get { return this.Padre == null && this.Madre == null; }
-        }
-
-        public bool Huerfano(Vinculo vinculo)
-        {
-            switch (vinculo)
-            {
-                case Vinculo.Materno:
-                    return this.Madre == null;
-                    
-                case Vinculo.Paterno:
-                    return this.Padre == null;
-            }
-            return false;
-        }
-
         public static bool SonPrimos(Persona p1, Persona p2)
-        {    
+        {
+            //if (p1 == null) return false;
+            //if (p2 == null) return false;            
+
             if (SonHermanos(p1.Padre, p2.Padre)) return true;
             if (SonHermanos(p1.Padre, p2.Madre)) return true;
 
             if (SonHermanos(p1.Madre, p2.Padre)) return true;
             if (SonHermanos(p1.Madre, p2.Madre)) return true;
-            
+
             return false;
         }
 
@@ -347,10 +379,57 @@ namespace Programacion.POO.Herencia
             return tio.EsTio(this);
         }
 
+        #endregion
+
+
+        #region "Abuelos"
+
+        public Persona AbueloPaterno
+        {
+            get
+            {
+                return Abuelo(Vinculo.Paterno);
+            }
+        }
+
+        public Persona AbuelaPaterna
+        {
+            get
+            {
+                return Abuelo(Vinculo.Paterno, Genero.Mujer);
+            }
+        }
+
+        public Persona AbueloMaterno
+        {
+            get
+            {
+                if (this.Madre != null) return this.Madre.Padre;
+                return null;
+            }
+        }
+
+        public Persona AbuelaMaterna
+        {
+            get
+            {
+                if (this.Madre != null) return this.Madre.Madre;
+                return null;
+            }
+        }
+
         public Persona Abuelo(Vinculo vinculo)
         {
-            //Delegamos en el metodo Abuelo, pasando el vinculo y como genero hombre
-            return Abuelo(vinculo, Genero.Mujer);
+            switch (vinculo)
+            {
+                case Vinculo.Materno:
+                    if (this.Madre != null) return this.Madre.Padre;
+                    break;
+                case Vinculo.Paterno:
+                    if (this.Padre != null) return this.Madre.Padre;
+                    break;
+            }
+            return null;
         }
 
         public Persona Abuela(Vinculo vinculo)
@@ -359,7 +438,7 @@ namespace Programacion.POO.Herencia
             return Abuelo(vinculo, Genero.Mujer);
         }
 
-        private Persona Abuelo(Vinculo vinculo, Genero genero)
+        public Persona Abuelo(Vinculo vinculo, Genero genero)
         {
             Persona prognitor = null;
 
@@ -370,7 +449,7 @@ namespace Programacion.POO.Herencia
                     break;
                 case Vinculo.Paterno:
                     prognitor = this.Padre;
-                    break;               
+                    break;
             }
 
             if (prognitor != null)
@@ -384,12 +463,9 @@ namespace Programacion.POO.Herencia
 
             return null;
         }
-        
 
-        public override string ToString()
-        {            
-            return this.NombreCompleto + " (" + this.Genero + ")";
-        }
+        #endregion
+
 
     }
 }

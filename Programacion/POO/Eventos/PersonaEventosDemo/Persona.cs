@@ -229,7 +229,7 @@ namespace Programacion.POO.Eventos
 
         public event EventHandler RecienCasado;
 
-        protected void OnRecienCasado(EventArgs e)
+        protected virtual void OnRecienCasado(EventArgs e)
         {
             if (RecienCasado != null) RecienCasado(this, e);
         }
@@ -237,11 +237,30 @@ namespace Programacion.POO.Eventos
 
         public event EventHandler<CasandoseEventArgs> Casandose;
 
-        protected bool OnCasandose(CasandoseEventArgs e)
+        protected virtual bool OnCasandose(CasandoseEventArgs e)
         {
-            if (this.Casandose != null) Casandose(this, e);
+            if (this.Casandose != null)
+            {
+                //Invocar la lista de controladores mientras ningun cancele el matrimonio
+                foreach (EventHandler<CasandoseEventArgs> handler in Casandose.GetInvocationList())
+                {
+                    handler.Invoke(this, e);
+                    if (e.AnularMatrimonio == true) return true;                
+                }
+
+                //Ahora invocar la lista de controladores para el evento pero con el novio
+                CasandoseEventArgs novioEventArgs = new CasandoseEventArgs(this);
+
+                foreach (EventHandler<CasandoseEventArgs> handler in e.Novio.Casandose.GetInvocationList())
+                {
+                    handler.Invoke(e.Novio, novioEventArgs);
+                    e.AnularMatrimonio = novioEventArgs.AnularMatrimonio;
+                    if (novioEventArgs.AnularMatrimonio == true) return true;
+                }	
+            }
             return e.AnularMatrimonio;
         }
+        
 
 
         public void Casarse(Persona prometido)
@@ -262,18 +281,21 @@ namespace Programacion.POO.Eventos
             if (prometido.Casado)
                 throw new ArgumentException("Una persona casada no puede casarse con esta persona", "prometido");
 
-            //Provocamos el evento para dar la oportunidad al codigo cliente de anular el matrimonio
-            CasandoseEventArgs cea = new CasandoseEventArgs(prometido);
-            OnCasandose(cea); //Lanzar el evento Casandose
+            if (this.Casandose != null || prometido.Casandose != null)
+            {
+                //Provocamos el evento para dar la oportunidad al codigo cliente de anular el matrimonio
+                CasandoseEventArgs cea = new CasandoseEventArgs(prometido);
+                this.OnCasandose(cea); //Lanzar el evento Casandose
 
-            //Si se anulan el matrimonio por salir del metodo
-            if (cea.AnularMatrimonio) return;
+                //Si se anulan el matrimonio por salir del metodo
+                if (cea.AnularMatrimonio) return;
+            }
 
-            CasandoseEventArgs prometidocea = new CasandoseEventArgs(this);
-            prometido.OnCasandose(prometidocea); //El prometido tambien lanza el evento
+            //CasandoseEventArgs prometidocea = new CasandoseEventArgs(this);
+            //prometido.OnCasandose(prometidocea); //El prometido tambien lanza el evento
 
-            //Si anulan el matrimonio por la otra parte, salir del metodo
-            if (prometidocea.AnularMatrimonio) return;
+            ////Si anulan el matrimonio por la otra parte, salir del metodo
+            //if (prometidocea.AnularMatrimonio) return;
 
             this.Conyuge = prometido;
             prometido.Conyuge = this;

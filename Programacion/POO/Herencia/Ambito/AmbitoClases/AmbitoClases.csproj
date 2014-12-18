@@ -4,17 +4,15 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{617CBA8E-CE9B-471D-B3F6-1D8B9A6057A0}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <ProjectGuid>{E1E49A4C-BB39-427B-B01C-73E054A98786}</ProjectGuid>
+    <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>DelegadosEventosDemo</RootNamespace>
-    <AssemblyName>DelegadosEventosDemo</AssemblyName>
+    <RootNamespace>Programacion.POO.Herencia.Ambito</RootNamespace>
+    <AssemblyName>AmbitoClases</AssemblyName>
     <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -24,7 +22,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -32,32 +29,20 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
-  <PropertyGroup>
-    <StartupObject>Programacion.POO.Eventos.Multicontrolador.Programa</StartupObject>
-  </PropertyGroup>
-  <ItemGroup>
-    <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Delegados\Accion.cs" />
-    <Compile Include="Delegados\Programa.cs" />
-    <Compile Include="Eventos\Accion.cs" />
-    <Compile Include="Eventos\ExplicitoCustom\EscasaEnSubscriptores.cs" />
-    <Compile Include="Eventos\Explicito\Accion.cs" />
-    <Compile Include="Eventos\Explicito\Programa.cs" />
-    <Compile Include="Eventos\Multicontrolador\Accion.cs" />
-    <Compile Include="Eventos\Multicontrolador\Programa.cs" />
-    <Compile Include="Eventos\Programa.cs" />
-    <Compile Include="Eventos\Standard\Accion.cs" />
-    <Compile Include="Eventos\Standard\Generico\Accion.cs" />
-    <Compile Include="Eventos\Standard\Generico\Programa.cs" />
-    <Compile Include="Eventos\Standard\Programa.cs" />
-  </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Eventos\Explicito\Cuando.txt" />
+    <Compile Include="Base.cs" />
+    <Compile Include="Derivada.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UsaBase.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

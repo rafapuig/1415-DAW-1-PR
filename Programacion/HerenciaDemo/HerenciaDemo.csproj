@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{617CBA8E-CE9B-471D-B3F6-1D8B9A6057A0}</ProjectGuid>
+    <ProjectGuid>{1731D000-1919-489B-B587-6FBE98351A9F}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>DelegadosEventosDemo</RootNamespace>
-    <AssemblyName>DelegadosEventosDemo</AssemblyName>
+    <RootNamespace>HerenciaDemo</RootNamespace>
+    <AssemblyName>HerenciaDemo</AssemblyName>
     <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -32,32 +32,23 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
-  <PropertyGroup>
-    <StartupObject>Programacion.POO.Eventos.Multicontrolador.Programa</StartupObject>
-  </PropertyGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="ClassDiagram1.cd" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Delegados\Accion.cs" />
-    <Compile Include="Delegados\Programa.cs" />
-    <Compile Include="Eventos\Accion.cs" />
-    <Compile Include="Eventos\ExplicitoCustom\EscasaEnSubscriptores.cs" />
-    <Compile Include="Eventos\Explicito\Accion.cs" />
-    <Compile Include="Eventos\Explicito\Programa.cs" />
-    <Compile Include="Eventos\Multicontrolador\Accion.cs" />
-    <Compile Include="Eventos\Multicontrolador\Programa.cs" />
-    <Compile Include="Eventos\Programa.cs" />
-    <Compile Include="Eventos\Standard\Accion.cs" />
-    <Compile Include="Eventos\Standard\Generico\Accion.cs" />
-    <Compile Include="Eventos\Standard\Generico\Programa.cs" />
-    <Compile Include="Eventos\Standard\Programa.cs" />
+    <Compile Include="Animal.cs" />
+    <Compile Include="Empleado.cs" />
+    <Compile Include="Empleado2.cs" />
+    <Compile Include="Gato.cs" />
+    <Compile Include="Hombre.cs" />
+    <Compile Include="Mujer.cs" />
+    <Compile Include="Perro.cs" />
+    <Compile Include="Persona.cs" />
+    <Compile Include="Programa.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Eventos\Explicito\Cuando.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

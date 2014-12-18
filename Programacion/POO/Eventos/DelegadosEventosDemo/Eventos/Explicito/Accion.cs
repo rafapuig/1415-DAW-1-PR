@@ -32,7 +32,7 @@ namespace Programacion.POO.Eventos.Evento.Explicito
                 if (precio == value) return;    //El precio no ha cambiado
                 decimal precioAnterior = this.precio;
                 this.precio = value;
-                if (this.PrecioChanged != null) this.PrecioChanged(precioAnterior, this.precio);                
+                if (this._PrecioChanged != null) this._PrecioChanged(precioAnterior, this.precio);                
             }
         }
     }
