@@ -37,6 +37,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Persona.cs" />
+    <Compile Include="PersonaEventoRegalar.cs" />
+    <Compile Include="PersonaEventosCasarse.cs" />
     <Compile Include="TestPersona.cs" />
   </ItemGroup>
   <ItemGroup>

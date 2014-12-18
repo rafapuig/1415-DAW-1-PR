@@ -11,7 +11,7 @@ namespace Programacion.POO.Eventos
     public enum Vinculo { Materno, Paterno }
     public enum OrdenApellido { Primero, Segundo }
 
-    public class Persona
+    public partial class Persona
     {
         public static Persona Adan { get; private set; }
         public static readonly Persona Eva; //Eva no puede asignarse salvo en el constructor de la clase (static)
@@ -184,130 +184,11 @@ namespace Programacion.POO.Eventos
 
         private Persona conyuge;
 
-        public Persona Conyuge
-        {
-            get { return this.conyuge; }
-            private set
-            {
-                this.conyuge = value;
-                if (value != null) OnRecienCasado(EventArgs.Empty);
-
-                ////Si hay en value un referencia a una persona (el novio o pretendiente) entonces se esta casando
-                //if (value != null)
-                //{
-                //    if (!OKCasamiento)
-                //    {
-                        
-                //        //Provocamos el evento para dar la oportunidad al codigo cliente de anular el matrimonio
-                //        CasandoseEventArgs cea = new CasandoseEventArgs(value);
-                //        OnCasandose(cea); //Lanzar el evento Casandose
-
-                //        //Si algun subscritor no anula el matrimonio
-                //        if (!cea.AnularMatrimonio)
-                //        {
-                //            OKCasamiento = true;
-                //            //if (!value.OKCasamiento)
-                //            //    value.Casandose += ((sender, e) => heSidoAceptado = !e.AnularMatrimonio);
-                //            value.Conyuge = this;
-                //            if (value.OKCasamiento)
-                //            {
-                //                this.conyuge = value;
-                //                OnRecienCasado(EventArgs.Empty);
-                //            }
-                //        }
-                //    }                    
-                //}
-                //else { this.conyuge = null; }                
-            }
-        }
-
       
 
         public bool Casado { get { return this.conyuge != null; } } // o this.EstadoCivil == EstadoCivil.Casado;
-
-
-
-        public event EventHandler RecienCasado;
-
-        protected virtual void OnRecienCasado(EventArgs e)
-        {
-            if (RecienCasado != null) RecienCasado(this, e);
-        }
-
-
-        public event EventHandler<CasandoseEventArgs> Casandose;
-
-        protected virtual bool OnCasandose(CasandoseEventArgs e)
-        {
-            if (this.Casandose != null)
-            {
-                //Invocar la lista de controladores mientras ningun cancele el matrimonio
-                foreach (EventHandler<CasandoseEventArgs> handler in Casandose.GetInvocationList())
-                {
-                    handler.Invoke(this, e);
-                    if (e.AnularMatrimonio == true) return true;                
-                }
-
-                //Ahora invocar la lista de controladores para el evento pero con el novio
-                CasandoseEventArgs novioEventArgs = new CasandoseEventArgs(this);
-
-                foreach (EventHandler<CasandoseEventArgs> handler in e.Novio.Casandose.GetInvocationList())
-                {
-                    handler.Invoke(e.Novio, novioEventArgs);
-                    e.AnularMatrimonio = novioEventArgs.AnularMatrimonio;
-                    if (novioEventArgs.AnularMatrimonio == true) return true;
-                }	
-            }
-            return e.AnularMatrimonio;
-        }
+             
         
-
-
-        public void Casarse(Persona prometido)
-        {
-            //Comprobar prometido existe
-            if (prometido == null)
-                throw new ArgumentNullException("prometido",
-                    "No se ha proporcionado una referencia a la persona prometida");
-            
-            //Comprobar que no se casa consigo mismo
-            if (this == prometido)
-                throw new ArgumentException("Una persona no puede casarse consigo misma");
-
-            //Comprobar que no esta casado con otra persona
-            if (Casado)
-                throw new InvalidOperationException("No se puede cassar estando casado");
-
-            if (prometido.Casado)
-                throw new ArgumentException("Una persona casada no puede casarse con esta persona", "prometido");
-
-            if (this.Casandose != null || prometido.Casandose != null)
-            {
-                //Provocamos el evento para dar la oportunidad al codigo cliente de anular el matrimonio
-                CasandoseEventArgs cea = new CasandoseEventArgs(prometido);
-                this.OnCasandose(cea); //Lanzar el evento Casandose
-
-                //Si se anulan el matrimonio por salir del metodo
-                if (cea.AnularMatrimonio) return;
-            }
-
-            //CasandoseEventArgs prometidocea = new CasandoseEventArgs(this);
-            //prometido.OnCasandose(prometidocea); //El prometido tambien lanza el evento
-
-            ////Si anulan el matrimonio por la otra parte, salir del metodo
-            //if (prometidocea.AnularMatrimonio) return;
-
-            this.Conyuge = prometido;
-            prometido.Conyuge = this;
-
-            this.EstadoCivil = EstadoCivil.Casado;
-            this.conyuge.EstadoCivil = this.EstadoCivil;
-
-            //this.OnRecienCasado(EventArgs.Empty);
-            //this.conyuge.OnRecienCasado(EventArgs.Empty);
-
-        }
-
         public void Divorciarse()
         {
             //if (this.Conyuge == null)
@@ -554,45 +435,8 @@ namespace Programacion.POO.Eventos
         public override string ToString()
         {            
             return this.NombreCompleto + " (" + this.Genero + ")";
-        }
-
-        public event EventHandler<RegaloRecibidoEventArgs> RegaloRecibido;
-
-        protected void OnRegaloRecibido(RegaloRecibidoEventArgs e)
-        {
-            if (RegaloRecibido != null) RegaloRecibido(this, e);
-        }
-
-        public void Regalar(Persona obsequiado, string regalo)
-        {
-            //Quien lanza el evento es el obsequiado!!!
-            obsequiado.OnRegaloRecibido(new RegaloRecibidoEventArgs(this, regalo));
-        }
+        }        
        
-    }
-
-    public class RegaloRecibidoEventArgs : System.EventArgs
-    {
-        public readonly Persona Obsequiador;
-        public readonly string Regalo;
-
-        public RegaloRecibidoEventArgs(Persona obsequiador, string regalo)
-        {
-            this.Obsequiador = obsequiador;
-            this.Regalo = regalo;
-        }
-    }
-
-    public class CasandoseEventArgs : System.EventArgs
-    {
-        public readonly Persona Novio;
-        public bool AnularMatrimonio;
-
-        public CasandoseEventArgs(Persona novio)
-        {
-            this.Novio = novio;
-        }
-
     }
 
 }
