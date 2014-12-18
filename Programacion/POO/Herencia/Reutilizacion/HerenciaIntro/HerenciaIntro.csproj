@@ -37,13 +37,8 @@
     <None Include="ClassDiagram1.cd" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Animal.cs" />
+    <Compile Include="Delegacion\Empleado.cs" />
     <Compile Include="Empleado.cs" />
-    <Compile Include="Empleado2.cs" />
-    <Compile Include="Gato.cs" />
-    <Compile Include="Hombre.cs" />
-    <Compile Include="Mujer.cs" />
-    <Compile Include="Perro.cs" />
     <Compile Include="Persona.cs" />
     <Compile Include="Programa.cs" />
   </ItemGroup>

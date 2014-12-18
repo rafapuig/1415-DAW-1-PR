@@ -9,11 +9,11 @@ namespace HerenciaDemo
     class Persona
     {
         public string Nombre { get; set; }
-        public string Apellidos { get; set; }
 
-        public string NombreCompleto()
-        {
-            return this.Nombre + " " + this.Apellidos;
+        public string Apellido { get; set; }
+
+        public string NombreCompleto { 
+            get { return this.Nombre + " " + this.Apellido; } 
         }
     }
 }

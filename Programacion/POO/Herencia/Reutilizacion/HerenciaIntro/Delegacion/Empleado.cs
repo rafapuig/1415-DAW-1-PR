@@ -4,11 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HerenciaDemo
+namespace HerenciaDemo.Delegacion
 {
     class Empleado
     {
-        private Persona laPersonaQueTodoEmpleadoLlevaDentro; 
+        private Persona laPersonaQueTodoEmpleadoLlevaDentro;
+
+        public decimal Salario { get; set; }
 
         public Empleado()
         {
@@ -20,11 +22,15 @@ namespace HerenciaDemo
             get { return this.laPersonaQueTodoEmpleadoLlevaDentro.Nombre; }
             set { this.laPersonaQueTodoEmpleadoLlevaDentro.Nombre = value; }
         }
-        public string Apellido { get; set; }
-
-        public string NombreCompleto()
+        public string Apellido 
         {
-            return this.laPersonaQueTodoEmpleadoLlevaDentro.NombreCompleto();
+            get { return this.laPersonaQueTodoEmpleadoLlevaDentro.Apellido; }
+            set { this.laPersonaQueTodoEmpleadoLlevaDentro.Apellido = value; }
+        }
+
+        public string NombreCompleto
+        {
+            get { return this.laPersonaQueTodoEmpleadoLlevaDentro.NombreCompleto; }
         }
 
     }

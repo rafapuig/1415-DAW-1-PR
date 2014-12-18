@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HerenciaDemo
+namespace HerenciaDemo.Herencia
 {
-    class Empleado2 : Persona
+    class Empleado : Persona
     {
         public decimal Salario { get; set; }
     }
