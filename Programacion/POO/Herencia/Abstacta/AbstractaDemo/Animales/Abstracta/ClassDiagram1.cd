@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Programacion.POO.Herencia.Animales.Abstracta.Animal">
+    <Position X="8.25" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Animales\Abstracta\Animal.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Programacion.POO.Herencia.Animales.Abstracta.Ave">
+    <Position X="9.75" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAA=</HashCode>
+      <FileName>Animales\Abstracta\Ave.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Programacion.POO.Herencia.Animales.Abstracta.Gallo">
+    <Position X="11" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Animales\Abstracta\Gallo.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Programacion.POO.Herencia.Animales.Abstracta.Gato">
+    <Position X="7" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Animales\Abstracta\Gato.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Programacion.POO.Herencia.Animales.Abstracta.Pato">
+    <Position X="9" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAA=</HashCode>
+      <FileName>Animales\Abstracta\Pato.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Programacion.POO.Herencia.Animales.Abstracta.Perro">
+    <Position X="5" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Animales\Abstracta\Perro.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

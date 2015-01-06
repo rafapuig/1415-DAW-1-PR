@@ -34,8 +34,10 @@
   </PropertyGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="ClassDiagram1.cd" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Persona.cs_" />
     <Compile Include="Persona.cs" />
     <Compile Include="PersonaEventoRegalar.cs" />
     <Compile Include="PersonaEventosCasarse.cs" />

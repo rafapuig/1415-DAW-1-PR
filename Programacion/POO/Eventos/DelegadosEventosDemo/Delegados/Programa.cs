@@ -43,5 +43,6 @@ namespace Programacion.POO.Eventos.Delegados
             Console.WriteLine("Anterior: {0} euros", antes);
             Console.WriteLine("Actual  : {0} euros", actual);
         }
+    
     }
 }

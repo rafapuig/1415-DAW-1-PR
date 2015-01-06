@@ -28,6 +28,11 @@ namespace Programacion.POO.Eventos
         //Campo de solo lectura
         public readonly DateTime Creacion; // = DateTime.Now;
 
+        public readonly Genero Genero;  //El genero no puede cambiar una vez construido el objeto Persona
+        //public Genero Genero { get; set; }
+
+        #region "Constructores de instancia"
+        
         //Constructores
         private Persona(Genero genero, string nombre)
         {
@@ -43,7 +48,7 @@ namespace Programacion.POO.Eventos
         }
 
         private Persona(Genero genero, string nombre, string apellido)
-            : this(genero, nombre)
+            : this(genero, nombre)  //Delegar en el construtor de personas con menos parametros
         {
             this.Apellido = apellido;
         }
@@ -61,8 +66,8 @@ namespace Programacion.POO.Eventos
             //if (progenitor == null) return String.Empty;
             //return progenitor[OrdenApellido.Primero];
 
-            return progenitor != null ? 
-                progenitor[OrdenApellido.Primero] 
+            return progenitor != null ?
+                progenitor[OrdenApellido.Primero] //Los progenitores otorgan a sus descencientes su primer apellido
                 : String.Empty;
         }
 
@@ -77,10 +82,15 @@ namespace Programacion.POO.Eventos
             this.Madre = madre;
         }
 
+        #endregion
+
+        //Metodo de la clase que genera instancias objetos de tipo Persona (Fabrica)
         public static Persona Create(Genero genero, string nombre, string apellido)
         {
             return new Persona(genero, nombre, apellido);
         }
+
+        #region "Nombre y apellidos"
 
         public static string CapitalizarIniciales(string texto)
         {
@@ -109,6 +119,7 @@ namespace Programacion.POO.Eventos
             //Unir las palabras que componen el texto mediante espacios
             return String.Join(" ", partes);
         }
+
 
         string nombre;
         public string Nombre
@@ -168,64 +179,44 @@ namespace Programacion.POO.Eventos
             set { this[OrdenApellido.Primero] = value; }
         }
 
-        public DateTime FechaNacimiento { get; set; }
-
-        public int Edad 
-        { 
-            get 
-            {
-                return DateTime.Now.Year - this.FechaNacimiento.Year +
-                    DateTime.Now.DayOfYear < this.FechaNacimiento.DayOfYear ? -1 : 0;
-            } 
-        }
-
-        public EstadoCivil EstadoCivil { get; private set; }
-
-
-        private Persona conyuge;
-
-      
-
-        public bool Casado { get { return this.conyuge != null; } } // o this.EstadoCivil == EstadoCivil.Casado;
-             
-        
-        public void Divorciarse()
+        public string SegundoApellido
         {
-            //if (this.Conyuge == null)
-            if (!Casado)
-                throw new InvalidOperationException("No se puede divorciar alguien que no este previamente casado");
-
-            this.conyuge.EstadoCivil = EstadoCivil.Divorciado;
-            this.EstadoCivil = EstadoCivil.Divorciado;
-
-            this.conyuge.conyuge = null;
-            this.conyuge = null;
+            get { return this[OrdenApellido.Segundo]; }
+            set { this[OrdenApellido.Segundo] = value; }
         }
 
-
+        //Propiedad Nombre Completo (solo lectura), se obtiene a partir de otras propiedades del objeto
         public string NombreCompleto
-        {            
-            get 
+        {
+            get
             {
                 StringBuilder sb = new StringBuilder(this.nombre);
-                foreach(string apellido in this.apellidos)
+                foreach (string apellido in this.apellidos)
                 {
                     if (!String.IsNullOrEmpty(apellido))
                         sb.AppendFormat(" {0}", apellido);
                 }
-                return sb.ToString(); 
+                return sb.ToString();
             }
         }
-                
+
         //public string NombreCompleto()
         //{
         //    return this.Nombre + " " + this.Apellido;
         //}
 
+#endregion
+                
+        #region "Saludos y presentaciones"
 
         public string Presentarse()
         {
             return this.Nombre + ":" + "Hola, me llamo " + this.NombreCompleto;
+        }
+
+        public string SaludarA(Persona otra)
+        {
+            return this.Nombre + ": " + "Hola " + otra.Nombre + "! ¿Como estas?";
         }
 
         public string PresentarA(Persona otra)
@@ -240,16 +231,78 @@ namespace Programacion.POO.Eventos
             return this.Nombre + ":" + "Te presento a " + otra.NombreCompleto;
         }
 
-        public string SaludarA(Persona otra)
+        #endregion
+
+        
+        public DateTime FechaNacimiento { get; set; }
+
+        public int Edad 
+        { 
+            get 
+            {
+                return DateTime.Now.Year - this.FechaNacimiento.Year +
+                    DateTime.Now.DayOfYear < this.FechaNacimiento.DayOfYear ? -1 : 0;
+            } 
+        }
+        
+
+        #region "Estado Civil, Casarse, Divorciarse ..."
+
+        public EstadoCivil EstadoCivil { get; private set; }
+
+
+        private Persona conyuge;
+
+        //public Persona Conyuge
+        //{
+        //    get { return this.conyuge; }
+        //}
+
+        public bool Casado { get { return this.conyuge != null; } } // o this.EstadoCivil == EstadoCivil.Casado;
+        
+        //public void Casarse(Persona prometido)
+        //{
+        //    //Comprobar prometido existe
+        //    if (prometido == null)
+        //        throw new ArgumentNullException("prometido",
+        //            "No se ha proporcionado una referencia a la persona prometida");
+            
+        //    //Comprobar que no se casa consigo mismo
+        //    if (this == prometido)
+        //        throw new ArgumentException("Una persona no puede casarse consigo misma");
+
+        //    //Comprobar que no esta casado con otra persona
+        //    if (Casado)
+        //        throw new InvalidOperationException("No se puede casar estando casado");
+
+        //    if (prometido.Casado)
+        //        throw new ArgumentException("Una persona casada no puede casarse con esta persona", "prometido");
+
+        //    this.conyuge = prometido;
+        //    prometido.conyuge = this;
+
+        //    this.EstadoCivil = EstadoCivil.Casado;
+        //    this.conyuge.EstadoCivil = this.EstadoCivil;
+        //}
+
+        public void Divorciarse()
         {
-            return this.Nombre + ": " + "Hola " + otra.Nombre + "! ¿Como estas?";
+            //if (this.Conyuge == null)
+            if (!Casado)
+                throw new InvalidOperationException("No se puede divorciar alguien que no este previamente casado");
+
+            this.conyuge.EstadoCivil = EstadoCivil.Divorciado;
+            this.EstadoCivil = EstadoCivil.Divorciado;
+
+            this.conyuge.conyuge = null;
+            this.conyuge = null;
         }
 
+        #endregion
 
 
-        public readonly Genero Genero;
-        //public Genero Genero { get; set; }
-       
+        #region "Padre, Madre y Horfandad"
+
         private Persona padre;
         public Persona Padre
         {
@@ -277,26 +330,11 @@ namespace Programacion.POO.Eventos
                 this.madre = value;
             }
         }
-
-
-        public static bool SonHermanos(Persona p1, Persona p2)
-        {
-            if (p1 == null || p2 == null) return false;
-
-            if (p1.Padre == p2.Padre && p1.Padre != null) return true;
-            if (p2.Madre == p2.Madre && p1.Madre != null) return true;
-            return false;
-        }
-
-        public bool EsHermano(Persona otra)
-        {
-            return SonHermanos(this, otra);
-        }
-
+         
 
         public bool HuerfanoTotal
         {
-            get { return this.Padre == null || this.Madre == null; }
+            get { return this.Padre == null && this.Madre == null; }
         }
 
         public bool Huerfano(Vinculo vinculo)
@@ -310,6 +348,25 @@ namespace Programacion.POO.Eventos
                     return this.Padre == null;
             }
             return false;
+        }
+
+        #endregion
+
+
+        #region "Parentescos"
+
+        public static bool SonHermanos(Persona p1, Persona p2)
+        {
+            if (p1 == null || p2 == null) return false;
+
+            if (p1.Padre == p2.Padre && p1.Padre != null) return true;
+            if (p2.Madre == p2.Madre && p1.Madre != null) return true;
+            return false;
+        }
+
+        public bool EsHermano(Persona otra)
+        {
+            return SonHermanos(this, otra);
         }
 
         public static bool SonPrimos(Persona p1, Persona p2)
@@ -351,6 +408,10 @@ namespace Programacion.POO.Eventos
             return tio.EsTio(this);
         }
 
+        #endregion
+
+
+        #region "Abuelos"
 
         public Persona AbueloPaterno
         {
@@ -430,13 +491,16 @@ namespace Programacion.POO.Eventos
             }
 
             return null;
-        }        
+        }
 
+        #endregion
+
+
+        //Reemplazar la representacion textual del objeto
         public override string ToString()
-        {            
-            return this.NombreCompleto + " (" + this.Genero + ")";
-        }        
-       
-    }
+        {
+            return this.NombreCompleto + " (" + this.Genero + ") [" + this.FechaNacimiento + "] " + this.EstadoCivil; ;
+        }
 
+    }
 }

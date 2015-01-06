@@ -110,7 +110,7 @@ namespace Programacion.POO.Herencia
             //Unir las palabras que componen el texto mediante espacios
             return String.Join(" ", partes);
         }
-
+        
 
         string nombre;
         public string Nombre
@@ -210,11 +210,6 @@ namespace Programacion.POO.Herencia
         public DateTime FechaNacimiento { get; set; }
 
 
-        //Reemplazar la representacion textual del objeto
-        public override string ToString()
-        {
-            return this.NombreCompleto + " (" + this.Genero + ") [" + this.FechaNacimiento + "] " + this.EstadoCivil;
-        }
 
 
         #region "Estado Civil, Casarse, Divorciarse ..."
@@ -244,7 +239,7 @@ namespace Programacion.POO.Herencia
 
             //Comprobar que no esta casado con otra persona
             if (Casado)
-                throw new InvalidOperationException("No se puede cassar estando casado");
+                throw new InvalidOperationException("No se puede casar estando casado");
 
             if (prometido.Casado)
                 throw new ArgumentException("Una persona casada no puede casarse con esta persona", "prometido");
@@ -305,7 +300,7 @@ namespace Programacion.POO.Herencia
 
         public bool HuerfanoTotal
         {
-            get { return this.Padre == null || this.Madre == null; }
+            get { return this.Padre == null && this.Madre == null; }
         }
 
         public bool Huerfano(Vinculo vinculo)
@@ -466,6 +461,12 @@ namespace Programacion.POO.Herencia
 
         #endregion
 
+
+        //Reemplazar la representacion textual del objeto
+        public override string ToString()
+        {
+            return this.NombreCompleto + " (" + this.Genero + ") [" + this.FechaNacimiento + "] " + this.EstadoCivil;
+        }
 
     }
 }

@@ -4,17 +4,15 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{C6E35A1C-01B3-4F27-9D18-F66D172EE9B7}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <ProjectGuid>{40902FB6-B4BC-48C8-ADDD-0668351CD1A3}</ProjectGuid>
+    <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Programacion.POO.Herencia</RootNamespace>
-    <AssemblyName>AbstractaDemo</AssemblyName>
-    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <RootNamespace>ModelingProject1Lib</RootNamespace>
+    <AssemblyName>ModelingProject1Lib</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -24,16 +22,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
-  <PropertyGroup>
-    <StartupObject>AbstractaDemo.Program</StartupObject>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -45,34 +39,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Animales\Abstracta\Animal.cs" />
-    <Compile Include="Animales\Abstracta\Ave.cs" />
-    <Compile Include="Animales\Abstracta\Gallo.cs" />
-    <Compile Include="Animales\Abstracta\Gato.cs" />
-    <Compile Include="Animales\Abstracta\Pato.cs" />
-    <Compile Include="Animales\Abstracta\Perro.cs" />
-    <Compile Include="Animales\Abstracta\Programa.cs" />
-    <Compile Include="Animales\SinSubclases\Animal.cs" />
-    <Compile Include="Animales\SinSubclases\Programa.cs" />
-    <Compile Include="Animales\Subclases\Hide\Animal.cs" />
-    <Compile Include="Animales\Subclases\Hide\Gato.cs" />
-    <Compile Include="Animales\Subclases\Hide\Perro.cs" />
-    <Compile Include="Animales\Subclases\Hide\Programa.cs" />
-    <Compile Include="Animales\Subclases\Virtual\Animal.cs" />
-    <Compile Include="Animales\Subclases\Virtual\Gato.cs" />
-    <Compile Include="Animales\Subclases\Virtual\Perro.cs" />
-    <Compile Include="Animales\Subclases\Virtual\Programa.cs" />
-    <Compile Include="Formas\Cuadrado.cs" />
-    <Compile Include="Formas\Forma.cs" />
-    <Compile Include="Formas\TestFormas.cs" />
-    <Compile Include="Program.cs" />
+    <Compile Include="GeneratedCode\Class4.cs" />
+    <Compile Include="GeneratedCode\Cliente.cs" />
+    <Compile Include="GeneratedCode\FactoriaAbstracta.cs" />
+    <Compile Include="GeneratedCode\FactoriaConcreta1.cs" />
+    <Compile Include="GeneratedCode\FactoriaConcreta2.cs" />
+    <Compile Include="GeneratedCode\Persona.cs" />
+    <Compile Include="GeneratedCode\ProductoA1.cs" />
+    <Compile Include="GeneratedCode\ProductoA2.cs" />
+    <Compile Include="GeneratedCode\ProductoAbstractoA.cs" />
+    <Compile Include="GeneratedCode\ProductoAbstractoB.cs" />
+    <Compile Include="GeneratedCode\ProductoB1.cs" />
+    <Compile Include="GeneratedCode\ProductoB2.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <None Include="App.config" />
-    <None Include="Animales\Abstracta\ClassDiagram1.cd" />
-  </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

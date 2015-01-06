@@ -4,7 +4,7 @@ namespace Programacion.POO.Herencia.Animales.Subclases.Hide
 {
     /// <summary>
     /// En esta version los subtipos Perro y Gato ocultan o ensombrecen el metodo EmitirSonido de la clase base Animal
-    /// Cuando se use una referencia de tipo especifico (Gato o Perro) se usar esa implementacion
+    /// Cuando se use una referencia de tipo especifico (Gato o Perro) se usa esa implementacion
     /// Si se usa una refencia de tipo base Animal se llamara a la implementacion de la clase Animal
     /// El tipo de la referencia utilizada para llamar al metodo fija la version del metodo que se va a llamar
     /// </summary>

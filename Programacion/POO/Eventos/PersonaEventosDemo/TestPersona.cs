@@ -20,12 +20,14 @@ namespace Programacion.POO.Eventos
             juan.Regalar(alicia, "anillo de compromiso");
             alicia.Regalar(juan, "PlayStation 4");
             
+            //Asociar un controlador de eventos al evento Casandose de los objetos juan y alicia
             juan.Casandose += CasandoseHandler;
             alicia.Casandose += CasandoseHandler;
 
             juan.RecienCasado += RecienCasadoHandler;
             alicia.RecienCasado += RecienCasadoHandler;  
 
+            //juan se casa con alicia
             juan.Casarse(alicia);
 
             Console.ReadKey();

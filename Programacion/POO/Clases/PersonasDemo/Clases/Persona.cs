@@ -28,6 +28,11 @@ namespace Programacion.POO.Encapsulacion
         //Campo de solo lectura
         public readonly DateTime Creacion; // = DateTime.Now;
 
+        public readonly Genero Genero;  //El genero no puede cambiar una vez construido el objeto Persona
+        //public Genero Genero { get; set; }
+
+        #region "Constructores de instancia"
+        
         //Constructores
         private Persona(Genero genero, string nombre)
         {
@@ -43,7 +48,7 @@ namespace Programacion.POO.Encapsulacion
         }
 
         private Persona(Genero genero, string nombre, string apellido)
-            : this(genero, nombre)
+            : this(genero, nombre)  //Delegar en el construtor de personas con menos parametros
         {
             this.Apellido = apellido;
         }
@@ -61,8 +66,8 @@ namespace Programacion.POO.Encapsulacion
             //if (progenitor == null) return String.Empty;
             //return progenitor[OrdenApellido.Primero];
 
-            return progenitor != null ? 
-                progenitor[OrdenApellido.Primero] 
+            return progenitor != null ?
+                progenitor[OrdenApellido.Primero] //Los progenitores otorgan a sus descencientes su primer apellido
                 : String.Empty;
         }
 
@@ -77,10 +82,15 @@ namespace Programacion.POO.Encapsulacion
             this.Madre = madre;
         }
 
+        #endregion
+
+        //Metodo de la clase que genera instancias objetos de tipo Persona (Fabrica)
         public static Persona Create(Genero genero, string nombre, string apellido)
         {
             return new Persona(genero, nombre, apellido);
         }
+
+        #region "Nombre y apellidos"
 
         public static string CapitalizarIniciales(string texto)
         {
@@ -109,6 +119,7 @@ namespace Programacion.POO.Encapsulacion
             //Unir las palabras que componen el texto mediante espacios
             return String.Join(" ", partes);
         }
+
 
         string nombre;
         public string Nombre
@@ -168,6 +179,61 @@ namespace Programacion.POO.Encapsulacion
             set { this[OrdenApellido.Primero] = value; }
         }
 
+        public string SegundoApellido
+        {
+            get { return this[OrdenApellido.Segundo]; }
+            set { this[OrdenApellido.Segundo] = value; }
+        }
+
+        //Propiedad Nombre Completo (solo lectura), se obtiene a partir de otras propiedades del objeto
+        public string NombreCompleto
+        {
+            get
+            {
+                StringBuilder sb = new StringBuilder(this.nombre);
+                foreach (string apellido in this.apellidos)
+                {
+                    if (!String.IsNullOrEmpty(apellido))
+                        sb.AppendFormat(" {0}", apellido);
+                }
+                return sb.ToString();
+            }
+        }
+
+        //public string NombreCompleto()
+        //{
+        //    return this.Nombre + " " + this.Apellido;
+        //}
+
+#endregion
+                
+        #region "Saludos y presentaciones"
+
+        public string Presentarse()
+        {
+            return this.Nombre + ":" + "Hola, me llamo " + this.NombreCompleto;
+        }
+
+        public string SaludarA(Persona otra)
+        {
+            return this.Nombre + ": " + "Hola " + otra.Nombre + "! ¿Como estas?";
+        }
+
+        public string PresentarA(Persona otra)
+        {
+            if (otra == null)
+                throw new ArgumentNullException("No se ha proporcionado una referencia a una persona", "otra");
+
+            //Si se trata de mi mismo, me presento
+            if (otra == this)
+                return this.Presentarse();
+
+            return this.Nombre + ":" + "Te presento a " + otra.NombreCompleto;
+        }
+
+        #endregion
+
+        
         public DateTime FechaNacimiento { get; set; }
 
         public int Edad 
@@ -178,6 +244,9 @@ namespace Programacion.POO.Encapsulacion
                     DateTime.Now.DayOfYear < this.FechaNacimiento.DayOfYear ? -1 : 0;
             } 
         }
+        
+
+        #region "Estado Civil, Casarse, Divorciarse ..."
 
         public EstadoCivil EstadoCivil { get; private set; }
 
@@ -204,7 +273,7 @@ namespace Programacion.POO.Encapsulacion
 
             //Comprobar que no esta casado con otra persona
             if (Casado)
-                throw new InvalidOperationException("No se puede cassar estando casado");
+                throw new InvalidOperationException("No se puede casar estando casado");
 
             if (prometido.Casado)
                 throw new ArgumentException("Una persona casada no puede casarse con esta persona", "prometido");
@@ -229,54 +298,11 @@ namespace Programacion.POO.Encapsulacion
             this.conyuge = null;
         }
 
-
-        public string NombreCompleto
-        {            
-            get 
-            {
-                StringBuilder sb = new StringBuilder(this.nombre);
-                foreach(string apellido in this.apellidos)
-                {
-                    if (!String.IsNullOrEmpty(apellido))
-                        sb.AppendFormat(" {0}", apellido);
-                }
-                return sb.ToString(); 
-            }
-        }
-                
-        //public string NombreCompleto()
-        //{
-        //    return this.Nombre + " " + this.Apellido;
-        //}
+        #endregion
 
 
-        public string Presentarse()
-        {
-            return this.Nombre + ":" + "Hola, me llamo " + this.NombreCompleto;
-        }
+        #region "Padre, Madre y Horfandad"
 
-        public string PresentarA(Persona otra)
-        {
-            if (otra == null)
-                throw new ArgumentNullException("No se ha proporcionado una referencia a una persona", "otra");
-
-            //Si se trata de mi mismo, me presento
-            if (otra == this)
-                return this.Presentarse();
-
-            return this.Nombre + ":" + "Te presento a " + otra.NombreCompleto;
-        }
-
-        public string SaludarA(Persona otra)
-        {
-            return this.Nombre + ": " + "Hola " + otra.Nombre + "! ¿Como estas?";
-        }
-
-
-
-        public readonly Genero Genero;
-        //public Genero Genero { get; set; }
-       
         private Persona padre;
         public Persona Padre
         {
@@ -304,26 +330,11 @@ namespace Programacion.POO.Encapsulacion
                 this.madre = value;
             }
         }
-
-
-        public static bool SonHermanos(Persona p1, Persona p2)
-        {
-            if (p1 == null || p2 == null) return false;
-
-            if (p1.Padre == p2.Padre && p1.Padre != null) return true;
-            if (p2.Madre == p2.Madre && p1.Madre != null) return true;
-            return false;
-        }
-
-        public bool EsHermano(Persona otra)
-        {
-            return SonHermanos(this, otra);
-        }
-
+         
 
         public bool HuerfanoTotal
         {
-            get { return this.Padre == null || this.Madre == null; }
+            get { return this.Padre == null && this.Madre == null; }
         }
 
         public bool Huerfano(Vinculo vinculo)
@@ -337,6 +348,25 @@ namespace Programacion.POO.Encapsulacion
                     return this.Padre == null;
             }
             return false;
+        }
+
+        #endregion
+
+
+        #region "Parentescos"
+
+        public static bool SonHermanos(Persona p1, Persona p2)
+        {
+            if (p1 == null || p2 == null) return false;
+
+            if (p1.Padre == p2.Padre && p1.Padre != null) return true;
+            if (p2.Madre == p2.Madre && p1.Madre != null) return true;
+            return false;
+        }
+
+        public bool EsHermano(Persona otra)
+        {
+            return SonHermanos(this, otra);
         }
 
         public static bool SonPrimos(Persona p1, Persona p2)
@@ -378,6 +408,10 @@ namespace Programacion.POO.Encapsulacion
             return tio.EsTio(this);
         }
 
+        #endregion
+
+
+        #region "Abuelos"
 
         public Persona AbueloPaterno
         {
@@ -458,11 +492,14 @@ namespace Programacion.POO.Encapsulacion
 
             return null;
         }
-        
 
+        #endregion
+
+
+        //Reemplazar la representacion textual del objeto
         public override string ToString()
-        {            
-            return this.NombreCompleto + " (" + this.Genero + ")";
+        {
+            return this.NombreCompleto + " (" + this.Genero + ") [" + this.FechaNacimiento + "] " + this.EstadoCivil; ;
         }
 
     }

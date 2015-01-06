@@ -19,5 +19,7 @@ namespace Programacion.POO.Herencia
                 return DateTime.Now.Year - this.FechaNacimiento.Year;
             }
         }
+
+        public decimal Salario { get; set; }
     }
 }
