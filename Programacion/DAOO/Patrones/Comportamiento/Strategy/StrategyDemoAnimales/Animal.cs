@@ -8,22 +8,23 @@ namespace StrategyDemoAnimales
 {
     class Animal
     {
-        protected IFlyStrategy flyStrategy;
+        protected IFlyingStrategy flyingStrategy;
 
-        public void SetStrategy(IFlyStrategy flyStrategy)
+        public void SetFlyingStrategy(IFlyingStrategy newFlyingStrategy)
         {
-            this.flyStrategy = flyStrategy;
+            this.flyingStrategy = newFlyingStrategy;
         }
 
         public void PerformFly()
         {
-            this.flyStrategy.Fly();
+            this.flyingStrategy.Fly();
         }
 
-        // No se hace asi, se utiliza la estrategia
-        //public void Fly()
-        //{
-        //    Console.WriteLine("Volando");
-        //}
+        // No se puede añadir si el comportamiento no es valido para TODAS las subclases!!!
+        // Tendria que estar remplazandolo en cada clase que no se ajuste a este comportamiento (muchas posibles)
+        public virtual void Fly()
+        {
+            Console.WriteLine("Estoy Volando");
+        }
     }
 }

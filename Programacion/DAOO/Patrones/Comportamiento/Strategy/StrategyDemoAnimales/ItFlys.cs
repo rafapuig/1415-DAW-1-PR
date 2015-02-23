@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace StrategyDemoAnimales
 {
-    class Flying : IFlyStrategy
+    class ItFlys : IFlyingStrategy
     {
         public void Fly()
         {

@@ -17,7 +17,8 @@ namespace StrategyDemoAnimales
             anElephant.PerformFly();
 
             Animal dumbo = new Elephant();
-            dumbo.SetStrategy(new Flying());
+            dumbo.PerformFly();
+            dumbo.SetFlyingStrategy(new ItFlys());
             dumbo.PerformFly();
 
             Console.ReadKey();

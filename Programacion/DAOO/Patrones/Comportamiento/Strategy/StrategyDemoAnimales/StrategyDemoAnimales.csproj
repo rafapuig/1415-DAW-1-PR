@@ -46,8 +46,8 @@
     <Compile Include="Bird.cs" />
     <Compile Include="CantFly.cs" />
     <Compile Include="Elephant.cs" />
-    <Compile Include="Flying.cs" />
-    <Compile Include="IFlyStrategy.cs" />
+    <Compile Include="ItFlys.cs" />
+    <Compile Include="IFlyingStrategy.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

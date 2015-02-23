@@ -10,7 +10,13 @@ namespace StrategyDemoAnimales
     {
         public Elephant()
         {
-            SetStrategy(new CantFly());
+            SetFlyingStrategy(new CantFly());
+        }
+
+        // Y remplazarlo en las clases que no deben adquirir el nuevo comportamiento definido en la base
+        public override void Fly()
+        {
+            Console.WriteLine("No puedo volar");
         }
     }
 }

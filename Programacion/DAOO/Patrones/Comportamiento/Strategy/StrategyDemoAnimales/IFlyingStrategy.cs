@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace StrategyDemoAnimales
 {
-    interface IFlyStrategy
+    interface IFlyingStrategy
     {
         void Fly();
     }

@@ -10,7 +10,7 @@ namespace StrategyDemoAnimales
     {
         public Bird()
         {
-            SetStrategy(new Flying());
+            SetFlyingStrategy(new ItFlys());
         }
 
     }
