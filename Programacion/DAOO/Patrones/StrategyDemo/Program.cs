@@ -20,7 +20,7 @@ namespace StrategyDemo
             //TestLessThanValidatorDecorator();  
             //TestDecoratorValidator();
             //TestGetValidatedInputFromPredicate();
-            //TestGetValidatedInputFromPredicates();
+            TestGetValidatedInputFromPredicates();
 
             //IValidator<int> validator = new RangeValidator(1, 100, "Experimentos entre <minValue> y <maxValue>");
             //int numero = GetNumber("Cuantas veces quieres repetir el experimento: ", validator);
