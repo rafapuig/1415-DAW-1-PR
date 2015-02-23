@@ -27,7 +27,7 @@ namespace Programacion.POO.Eventos
         
         public event EventHandler<CasandoseEventArgs> Casandose;
 
-        protected virtual bool OnCasandose(CasandoseEventArgs e)
+        protected virtual void OnCasandose(CasandoseEventArgs e)
         {
             if (this.Casandose != null)
             {
@@ -35,7 +35,7 @@ namespace Programacion.POO.Eventos
                 foreach (EventHandler<CasandoseEventArgs> handler in Casandose.GetInvocationList())
                 {
                     handler.Invoke(this, e);
-                    if (e.AnularMatrimonio == true) return true;
+                    if (e.AnularMatrimonio == true) return;// true;
                 }
 
                 //Ahora invocar la lista de controladores para el evento pero con el novio / novia
@@ -45,10 +45,10 @@ namespace Programacion.POO.Eventos
                 {
                     handler.Invoke(e.Novio, novioEventArgs);
                     e.AnularMatrimonio = novioEventArgs.AnularMatrimonio;
-                    if (novioEventArgs.AnularMatrimonio == true) return true;
+                    if (novioEventArgs.AnularMatrimonio == true) return; //true;
                 }
             }
-            return e.AnularMatrimonio;
+            //return e.AnularMatrimonio;
         }
 
         public void Casarse(Persona prometido)

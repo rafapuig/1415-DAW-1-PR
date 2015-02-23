@@ -23,6 +23,8 @@ namespace Programacion.POO.Eventos.StandardPattern.Generico
     //public delegate void PrecioChangedEventHandler(decimal precioAnterior, decimal precioNuevo);
     //public delegate void PrecioChangedEventHandler(object sender, PrecioChangedEventArgs e);    
 
+    //public delegate void EventHandler<T>(object sender,T e);
+
     class Accion
     {
         public string Simbolo { get; set; }

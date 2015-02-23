@@ -42,6 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CountDown.cs" />
     <Compile Include="IEmbarazable.cs" />
     <Compile Include="IInseminador.cs" />
     <Compile Include="Program.cs" />

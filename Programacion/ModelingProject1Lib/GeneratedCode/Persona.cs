@@ -16,12 +16,7 @@ public class Persona
 		get;
 		set;
 	}
-
-	public virtual Class3 Class3
-	{
-		get;
-		set;
-	}
+	
 
 	public virtual Class4 Class4
 	{

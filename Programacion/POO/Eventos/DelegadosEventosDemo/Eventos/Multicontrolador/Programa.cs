@@ -43,8 +43,8 @@ namespace Programacion.POO.Eventos.Multicontrolador
         }
 
         static void AccionPrecioChanged(object sender, PrecioChangedEventArgs e)
-        {
-            Accion a = sender as Accion;
+        {            
+            Accion a = sender as Accion;            
             Console.Write("Simbolo " + a.Simbolo);
             Console.Write("\tAnterior: {0,2}", e.PrecioAnterior);
             Console.Write("\tActual  : {0,2}", e.PrecioNuevo);

@@ -39,11 +39,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="GeneratedCode\Autor.cs" />
     <Compile Include="GeneratedCode\Class4.cs" />
     <Compile Include="GeneratedCode\Cliente.cs" />
     <Compile Include="GeneratedCode\FactoriaAbstracta.cs" />
     <Compile Include="GeneratedCode\FactoriaConcreta1.cs" />
     <Compile Include="GeneratedCode\FactoriaConcreta2.cs" />
+    <Compile Include="GeneratedCode\Libro.cs" />
     <Compile Include="GeneratedCode\Persona.cs" />
     <Compile Include="GeneratedCode\ProductoA1.cs" />
     <Compile Include="GeneratedCode\ProductoA2.cs" />

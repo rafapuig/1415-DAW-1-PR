@@ -1,0 +1,311 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{576AE57E-62BD-49AC-B9B1-BB808D640484}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Barajas.Modelos</RootNamespace>
+    <AssemblyName>Barajas.Modelos.Heraclio</AssemblyName>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Heraclio1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Heraclio.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Heraclio.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <SubType>Designer</SubType>
+      <LastGenOutput>Heraclio1.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\11.tif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\21.tif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\12.tif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\13.tif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\14.tif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\22.tif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\23.tif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\24.tif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\31.tif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\32.tif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\33.tif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\34.tif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\41.tif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\42.tif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\43.tif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\44.tif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\51.tif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\52.tif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\53.tif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\54.tif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\61.tif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\62.tif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\63.tif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\64.tif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\71.tif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\72.tif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\73.tif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\74.tif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\101.tif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\102.tif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\103.tif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\104.tif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\111.tif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\112.tif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\113.tif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\114.tif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\121.tif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\122.tif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\123.tif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\124.tif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\tapada.tif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\tapada.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\11.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\12.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\13.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\14.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\21.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\22.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\23.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\24.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\31.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\32.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\33.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\34.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\41.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\42.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\43.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\44.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\51.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\52.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\53.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\54.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\61.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\62.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\63.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\64.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\71.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\72.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\73.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\74.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\101.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\102.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\103.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\104.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\111.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\112.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\113.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\114.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\121.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\122.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\123.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\124.bmp" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

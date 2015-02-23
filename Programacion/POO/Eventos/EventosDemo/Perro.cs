@@ -25,7 +25,7 @@ namespace EventosDemo
             vida.Start();
         }
 
-        protected void OnSolitario(EventArgs e)
+        protected virtual void OnSolitario(EventArgs e)
         {
             if (this.Solitario != null) Solitario(this, e);
         }

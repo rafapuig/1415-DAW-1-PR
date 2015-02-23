@@ -14,12 +14,18 @@ namespace Programacion.POO.Eventos
         public void Regalar(Persona obsequiado, string regalo)
         {
             //Quien lanza el evento es el obsequiado!!!
-            obsequiado.OnRegaloRecibido(new RegaloRecibidoEventArgs(this, regalo));
+            //obsequiado.OnRegaloRecibido(new RegaloRecibidoEventArgs(this, regalo));
+            obsequiado.AceptarRegalo(this, regalo);
         }
 
-        protected void OnRegaloRecibido(RegaloRecibidoEventArgs e)
+        public void AceptarRegalo(Persona obserquiador, string regalo)
         {
-            if (RegaloRecibido != null) RegaloRecibido(this, e);
+            this.OnRegaloRecibido(new RegaloRecibidoEventArgs(obserquiador, regalo));
+        }
+
+        protected virtual void OnRegaloRecibido(RegaloRecibidoEventArgs e)
+        {
+            if (RegaloRecibido != null) this.RegaloRecibido.Invoke(this, e);
         }
     }
 
