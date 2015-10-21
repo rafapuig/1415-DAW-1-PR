@@ -602,6 +602,158 @@
         </ownedOperationsInternal>
       </class>
     </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="6a422448-5c33-4298-bc25-fa3fd35e6100"
+        name="Context"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <targetEnds>
+          <association
+            Id="26a2095b-372e-490c-84bd-10cb42426626"
+            isDerived="false"
+            sourceEndRoleName="Context"
+            targetEndRoleName="Strategy"
+            isLeaf="false"
+            isAbstract="false">
+            <interfaceMoniker
+              Id="8a9b7bd8-b511-4487-b480-abaee8fe6ed7"
+              LastKnownName="IStrategy"
+              LastKnownLocation="PatronesUML.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="ab5a7509-ca04-4480-8abf-cf385dac9b2e"
+                  name="Context"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="Shared"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="e274c8a6-e842-476b-bcef-2bbb266b70c3"
+                  name="Strategy"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+        </targetEnds>
+        <ownedOperationsInternal>
+          <operation
+            Id="ef06e66b-d225-43a4-bc43-930b0844610a"
+            name="setStatregy"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="7d59c6f8-0d21-428b-a29d-2050d37a9070"
+                  name="IStrategy"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="aa55bd8e-5294-4880-aa9f-d27be971091b"
+            name="performOperation"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
+        </ownedOperationsInternal>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <Interface
+        Id="8a9b7bd8-b511-4487-b480-abaee8fe6ed7"
+        name="IStrategy"
+        isAbstract="false"
+        isLeaf="false">
+        <ownedOperations>
+          <operation
+            Id="ea510a56-738e-42fd-aa70-ad81c8795fb0"
+            name="Algorithm"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="true"
+            concurrency="Sequential"
+            isQuery="false" />
+        </ownedOperations>
+      </Interface>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="fa1c022f-b88f-4c9d-a517-301db0a8c404"
+        name="StrategyA"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <suppliersInternal>
+          <interfaceRealization
+            Id="337c2a05-586c-426a-b1e0-f94aba3c01f0">
+            <interfaceMoniker
+              Id="8a9b7bd8-b511-4487-b480-abaee8fe6ed7"
+              LastKnownName="IStrategy"
+              LastKnownLocation="PatronesUML.uml" />
+          </interfaceRealization>
+        </suppliersInternal>
+        <ownedOperationsInternal>
+          <operation
+            Id="28abffd5-3616-4817-91d8-8456177d6308"
+            name="Algorithm"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
+        </ownedOperationsInternal>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="dc0d1d1f-2e7b-4a83-bea7-05902f24e7f6"
+        name="StrategyB"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <suppliersInternal>
+          <interfaceRealization
+            Id="462e343f-51e1-4fca-81b8-67cca95a4c80">
+            <interfaceMoniker
+              Id="8a9b7bd8-b511-4487-b480-abaee8fe6ed7"
+              LastKnownName="IStrategy"
+              LastKnownLocation="PatronesUML.uml" />
+          </interfaceRealization>
+        </suppliersInternal>
+        <ownedOperationsInternal>
+          <operation
+            Id="e17a8def-a723-4a61-81bd-1c86f5b6e664"
+            name="Algorithm"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
+        </ownedOperationsInternal>
+      </class>
+    </packageHasNamedElement>
   </packagedElements>
   <primitiveType
     Id="220a3521-e091-4221-bae9-3ef9018e845c"
